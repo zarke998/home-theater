@@ -1,0 +1,182 @@
+$primaryBlack: #080808;
+$textColorDefault: rgb(240, 240, 240);
+$fontSizeDefault: 20px;
+$fontFamilyDefault: "Segoe UI";
+
+$navigationBtnSize: 32px;
+$navigationBtnTop: 5px;
+$navigationBtnLeft: 10px;
+
+$footerBlack: #060606;
+$footerBorderTop: rgb(44, 44, 44);
+$footerListItemHeadingSize: 24px;
+
+
+@font-face{
+    font-family: "Segoe UI";
+    src: url("../fonts/Segoe\ UI.woff");
+}
+
+html{
+    font-size: $fontSizeDefault !important;
+    font-family: $fontSizeDefault !important;
+}
+
+body{
+    background-color: $primaryBlack;
+    color: $textColorDefault;
+}
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+a{
+    color: $textColorDefault;
+    &:hover{
+        color: $textColorDefault;
+        text-decoration: none;
+    }
+}
+
+.intro{
+    height: 700px;
+    background-image: url("../images/vin-diesel.jpg");
+    background-size: cover;
+    background-position-x: center;
+    // background-attachment: fixed;
+}
+
+.smallerIntro{
+    height: 600px;
+}
+.navigationContainer{
+    background-color: rgba(0,0,0,0.3) !important;
+}
+
+.navigationMenu{
+    li{
+        display: flex;
+        align-items: center;
+        a
+        {
+            color: $textColorDefault !important;
+            font-family: $fontFamilyDefault !important;
+        }
+    }
+}
+
+.navigationBtn{
+    position: fixed;
+    top: $navigationBtnTop;
+    left: $navigationBtnLeft;
+    color: $textColorDefault !important;
+    &:focus{
+        outline: none;
+    }
+    span
+    {
+        color: $textColorDefault !important;
+        font-size: $navigationBtnSize;
+    }
+}
+
+.websiteTitle{
+    font-size: 1.4rem;
+    color: $textColorDefault !important;
+}
+
+.account{
+    position: fixed;
+    right: 20px;
+    top: 12px;
+    i{
+        font-size: 36px;
+        &:hover{
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+}
+
+#loginContainer{
+    height: 600px;
+    overflow-y: hidden;
+}
+.decorationImage{
+    position: absolute;
+    right: 0px;
+    bottom: -125px;
+    height: 700px;
+    transform: scaleX(-1);
+    z-index: -1;
+}
+
+#footer{
+    background-color: $footerBlack;
+    border-top: 1px solid $footerBorderTop;
+}
+
+#copyright{
+    font-size: 16px;
+}
+
+.footerList{
+    div{
+        h3{
+            font-size: $footerListItemHeadingSize;
+        }
+        ul{
+            li{
+                margin: 5px 0px;
+            }
+        }
+    }
+}
+
+.newsletterContainer{
+    h3{
+        font-size: $footerListItemHeadingSize;
+    }
+    input:focus{
+        box-shadow: 0 0 0 0;
+    }
+}
+.sendIcon{
+    border: none;
+    color: $primaryBlack;
+    border-radius: 0px !important;
+    background-color: white;
+    &:hover{
+        cursor: pointer;
+        user-select: none;
+    }
+}
+// CUSTOM CLASSES
+.ht-btn{
+    border: 2px solid white;
+    border-radius: 1000px;
+    background-color: rgba(0,0,0,0.3);
+    color: $textColorDefault !important;
+    padding: 5px 0px;
+
+    &:hover{
+        background-color: rgba(0,0,0,1);
+    }
+}
+
+
+
+// CUSTOM SPACING CLASSES
+.ht-px-7{
+    padding: 0px 5rem;
+}
+
+//BOOTSTRAP CUSTOMIZATIONS
+
+    // CHECKBOX
+.custom-control-input:checked~.custom-control-label::before{ 
+    color: white;
+    background-color: black;
+    border-color: white;
+    border-width: 2px;
+}

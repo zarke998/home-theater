@@ -1,0 +1,176 @@
+@font-face {
+  font-family: "Segoe UI";
+  src: url("../fonts/Segoe UI.woff");
+}
+
+html {
+  font-size: 20px !important;
+  font-family: 20px !important;
+}
+
+body {
+  background-color: #080808;
+  color: #f0f0f0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+a {
+  color: #f0f0f0;
+}
+
+a:hover {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+.intro {
+  height: 700px;
+  background-image: url("../images/vin-diesel.jpg");
+  background-size: cover;
+  background-position-x: center;
+}
+
+.smallerIntro {
+  height: 600px;
+}
+
+.navigationContainer {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.navigationMenu li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navigationMenu li a {
+  color: #f0f0f0 !important;
+  font-family: "Segoe UI" !important;
+}
+
+.navigationBtn {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  color: #f0f0f0 !important;
+}
+
+.navigationBtn:focus {
+  outline: none;
+}
+
+.navigationBtn span {
+  color: #f0f0f0 !important;
+  font-size: 32px;
+}
+
+.websiteTitle {
+  font-size: 1.4rem;
+  color: #f0f0f0 !important;
+}
+
+.account {
+  position: fixed;
+  right: 20px;
+  top: 12px;
+}
+
+.account i {
+  font-size: 36px;
+}
+
+.account i:hover {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#loginContainer {
+  height: 600px;
+  overflow-y: hidden;
+}
+
+.decorationImage {
+  position: absolute;
+  right: 0px;
+  bottom: -125px;
+  height: 700px;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  z-index: -1;
+}
+
+#footer {
+  background-color: #060606;
+  border-top: 1px solid #2c2c2c;
+}
+
+#copyright {
+  font-size: 16px;
+}
+
+.footerList div h3 {
+  font-size: 24px;
+}
+
+.footerList div ul li {
+  margin: 5px 0px;
+}
+
+.newsletterContainer h3 {
+  font-size: 24px;
+}
+
+.newsletterContainer input:focus {
+  -webkit-box-shadow: 0 0 0 0;
+          box-shadow: 0 0 0 0;
+}
+
+.sendIcon {
+  border: none;
+  color: #080808;
+  border-radius: 0px !important;
+  background-color: white;
+}
+
+.sendIcon:hover {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.ht-btn {
+  border: 2px solid white;
+  border-radius: 1000px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #f0f0f0 !important;
+  padding: 5px 0px;
+}
+
+.ht-btn:hover {
+  background-color: black;
+}
+
+.ht-px-7 {
+  padding: 0px 5rem;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: white;
+  background-color: black;
+  border-color: white;
+  border-width: 2px;
+}
+/*# sourceMappingURL=main.css.map */
