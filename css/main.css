@@ -151,6 +151,86 @@ a:hover {
           user-select: none;
 }
 
+#newContentPanel {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#newContentPanelDialog {
+  width: 800px;
+  height: 500px;
+  overflow: auto;
+  position: relative;
+  background-color: #080808;
+  border: 1px solid gray;
+  margin-top: 100px;
+}
+
+#newContentPanelDialog h3 {
+  text-align: center;
+  font-size: 32px;
+}
+
+#newContentPanelDialog input[name=title] {
+  font-size: 28px;
+  padding-left: 0px;
+}
+
+#newCoverImage {
+  position: relative;
+}
+
+#newCoverImage img + input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+}
+
+#newCoverImage img + input:hover {
+  cursor: pointer;
+}
+
+#wallpapersContainer {
+  min-height: 50px;
+  max-height: 75px;
+  overflow-y: auto;
+}
+
+#addContentBtn {
+  width: 80px;
+  height: 45px;
+}
+
+.closeDialogBtn {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 28px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.closeDialogBtn:hover {
+  cursor: pointer;
+}
+
 .ht-btn {
   border: 2px solid white;
   border-radius: 1000px;
@@ -161,6 +241,151 @@ a:hover {
 
 .ht-btn:hover {
   background-color: black;
+}
+
+.ht-floating-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 50px;
+  bottom: 40px;
+  z-index: 1;
+  border: 2px solid #2c2c2c;
+  border-radius: 1000px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ht-floating-btn:hover {
+  cursor: pointer;
+  background-color: #141414;
+}
+
+.ht-floating-btn i {
+  font-size: 24px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.ht-input-text {
+  background-color: #080808;
+  border: 1px solid white;
+  color: white;
+  padding-left: 5px;
+}
+
+.ht-input-text::-webkit-input-placeholder {
+  color: white;
+}
+
+.ht-input-text:-ms-input-placeholder {
+  color: white;
+}
+
+.ht-input-text::-ms-input-placeholder {
+  color: white;
+}
+
+.ht-input-text::placeholder {
+  color: white;
+}
+
+.ht-inline-form-group label {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+.ht-inline-form-group input {
+  width: 40%;
+}
+
+.ht-file-label-group p {
+  font-size: 16px;
+}
+
+.ht-input-file {
+  position: relative;
+  height: 30px;
+}
+
+.ht-input-file div {
+  padding: 0px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.ht-input-file:hover {
+  cursor: pointer;
+}
+
+.ht-input-file input {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.ht-multiselect {
+  position: relative;
+  width: 5px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.ht-multiselect > div:first-child {
+  background-color: white;
+  color: black;
+  padding-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 5px;
+}
+
+.ht-multiselect > div:first-child:hover {
+  cursor: pointer;
+}
+
+.ht-multiselect-list {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 32px;
+  left: -1px;
+  z-index: 5;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.ht-multiselect-list-item {
+  padding-left: 5px;
+}
+
+.ht-multiselect-list-item label {
+  font-size: 18px;
+  color: black;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 .ht-px-7 {

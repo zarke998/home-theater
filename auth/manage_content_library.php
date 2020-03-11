@@ -1,0 +1,27 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION["user"])){
+        $username = $_SESSION["user"]->email;
+        $_SESSION["addContentSuccess"] = "Welcome $username";
+    }
+
+    $pageTitle = "HomeTheater - Manage content library";
+    require_once "../views/head.php";
+
+    $isIntroSmaller = true;
+    require_once "../views/header.php";
+
+    require_once "../views/manage_content_library_content.php";
+
+    $scripts = ["manage-content-library.js"];
+    if(isset($_SESSION["addContentError"])){
+        $alertMsg = $_SESSION["addContentError"];
+        unset($_SESSION["addContentError"]);
+    }
+    else if(isset($_SESSION["addContentSuccess"])){
+        $alertMsg = $_SESSION["addContentSuccess"];
+        unset($_SESSION["addContentSuccess"]);
+    }
+    require_once "../views/footer.php";
+?>

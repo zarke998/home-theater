@@ -11,6 +11,7 @@ $footerBlack: #060606;
 $footerBorderTop: rgb(44, 44, 44);
 $footerListItemHeadingSize: 24px;
 
+$dialogBorderColor: rgb(128, 128, 128);
 
 @font-face{
     font-family: "Segoe UI";
@@ -151,6 +152,87 @@ a{
         user-select: none;
     }
 }
+
+
+
+// MANAGE CONTENT LIBRARY 
+#newContentPanel{
+    background-color: rgba(0,0,0, 0.5);
+    position: fixed;
+    z-index: 9999;
+
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    display:flex;
+    justify-content: center;
+
+    &Dialog{
+        width: 800px;
+        height: 500px;
+        overflow: auto;
+
+        position: relative;
+
+        background-color: $primaryBlack;
+        border: 1px solid $dialogBorderColor;
+
+        margin-top: 100px;
+
+        h3{
+            text-align: center;
+            font-size: 32px;
+        }
+        input[name=title]{
+            font-size: 28px;
+            padding-left: 0px;
+        }
+    }
+}
+
+#newCoverImage{
+    position: relative;
+
+    img+input{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        opacity: 0;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+#wallpapersContainer{
+    min-height: 50px;
+    max-height: 75px;
+    overflow-y: auto;
+}
+#addContentBtn{
+    width: 80px;
+    height: 45px;
+}
+.closeDialogBtn{
+    display: block;
+    position: absolute;
+
+    right: 20px;
+    top: 20px;
+    
+    font-size: 28px;
+
+    user-select: none;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
 // CUSTOM CLASSES
 .ht-btn{
     border: 2px solid white;
@@ -163,8 +245,127 @@ a{
         background-color: rgba(0,0,0,1);
     }
 }
+.ht-floating-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    width: 50px;
+    height: 50px;
 
+    position: fixed;
+    right: 50px;
+    bottom: 40px;
+    z-index: 1;
+    
+    border: 2px solid $footerBorderTop;
+    border-radius: 1000px;
+
+    background-color: rgba(0,0,0,0.8);
+
+    &:hover{
+        cursor: pointer;
+        background-color: lighten(#000,8%);
+    }
+    i{
+        font-size: 24px;
+        user-select: none;
+    }
+}
+.ht-input-text{
+    background-color: $primaryBlack;
+    border: 1px solid white;
+    color: white;
+    padding-left: 5px;
+    &::placeholder{
+        color: white;
+    }
+}
+.ht-inline-form-group{
+    label{
+        flex-basis: 50%;
+    }
+    input{
+        width: 40%;
+    }
+}
+.ht-file-label-group{
+    p{
+        font-size: 16px;
+    }
+}
+.ht-input-file{
+    position: relative;
+    height: 30px;
+    div{
+        padding: 0px;
+        height: 30px;
+
+        font-size: 16px;
+        text-align: center;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+    input{
+        -webkit-appearance: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+}
+.ht-multiselect{
+    position: relative;
+
+    width: 5px;
+    flex-grow: 1;
+    >div:first-child{
+        background-color: white;
+        color: black;
+        padding-left: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        padding: 0px 5px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &-list{
+        width: 100%;
+        // min-height: 75px;
+        max-height: 200px;
+        overflow-y: auto;
+
+        position: absolute;
+        top: 32px;
+        left: -1px;
+        z-index: 5;
+
+        background-color: white;
+        border: 1px solid black;
+
+        &-item{
+            padding-left: 5px;
+            label{
+                font-size: 18px;
+                color: black;
+            }
+        }
+    }
+}
+.stop-scrolling{
+    height: 100%;
+    overflow: hidden;
+}
 
 // CUSTOM SPACING CLASSES
 .ht-px-7{
@@ -180,3 +381,8 @@ a{
     border-color: white;
     border-width: 2px;
 }
+
+//PLUGIN CLASSES
+
+        // MULTISELECT WITH CHECKBOXES
+        
