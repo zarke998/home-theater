@@ -2,7 +2,51 @@
     require_once "../logic/dbConnection.php";
 ?>
 
-<div class="container-fluid">
+<div id="manageLibraryContainer" class="container-fluid px-3">
+    <h1 class="text-center mt-3 mb-5">Manage library</h1>
+
+    <div id="contentFilters" class="row mb-4">
+        <div class="d-flex align-items-center col-6">
+            <label class="mb-0">Select content type: </label>
+            <select id="contentTypesSelect" class="ml-3">
+                <?php
+                    $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                    $rootPath.= "/home-theater";
+                    require_once "$rootPath/logic/getAllContentTypes.php";
+
+                    foreach($content_types as $c): ?>
+                        <option value="<?=$c->id?>"><?=$c->name?></option>
+                    <?php endforeach;
+                ?>
+            </select>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3">
+            <input class="d-block ml-auto" type="search" id="search" placeholder="search">
+        </div>
+    </div>
+
+    <div id="manageContentList" class="row mt-2 mb-3">
+        <!-- <div class="col-3 manageContentItem mb-3">
+            <div>
+                <img src="/home-theater/images/no-image.jpg" alt="Cover">
+            </div>
+            <div class="px-0 ml-2">
+                <div>
+                    <div class="d-flex align-items-center mb-2">
+                        <h3 class="d-inline mb-0">Deadpool</h3> <i class="d-inline ml-2 material-icons deleteBtn">delete</i>
+                    </div>
+                    <p>Release year: 2019</p>
+                    <p>Runtime: 120min</p>
+                    <p>Categories: Actio, Drama...</p>
+                </div>  
+                <button class="ht-btn" value="1" type="button">Edit</button>
+            </div>
+        </div> -->
+    </div>
+        <button id="loadMoreContent" type="button" class="ht-btn mx-auto my-3"><i class="material-icons">arrow_drop_down</i></button>
+
+    <!-- HIDDEN -->
     <div id="addNewContentBtn" class="ht-floating-btn">
         <i class="material-icons">add</i>
     </div>
@@ -70,22 +114,7 @@
                                     <div class="ht-multiselect ml-2">
                                         <div>(none)</div>
                                         <div id="categoriesDropdown" class="ht-multiselect-list d-none">
-                                            <div class="ht-multiselect-list-item">
-                                                <input type="checkbox" value="0"/>
-                                                <label>Action</label>
-                                            </div>
-                                            <div class="ht-multiselect-list-item">
-                                                <input type="checkbox" value="0"/>
-                                                <label>Action</label>
-                                            </div>
-                                            <div class="ht-multiselect-list-item">
-                                                <input type="checkbox" value="0"/>
-                                                <label>Action</label>
-                                            </div>
-                                            <div class="ht-multiselect-list-item">
-                                                <input type="checkbox" value="0"/>
-                                                <label>Action</label>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -116,10 +145,12 @@
                             </div>
                         </div>
                     </div>
-                    <div id="errorInfo" class="invalid-feedback text-right"></div>
+                    <div id="errorInfo" class="invalid-feedback text-right mb-2"></div>
                     <button id="addContentBtn" type="submit" name="addBtn" value="add" class="d-block w-25 ml-auto mb-2 ht-btn">Add</button>
+                    <button id="updateContentBtn" type="submit" name="updateBtn" value="update" class="d-none w-25 ml-auto mb-2 ht-btn">Edit</button>
                 </div>
             </form>
         </div>
     </div>
+
 </div>

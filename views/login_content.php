@@ -18,5 +18,5 @@
             </form>
         </div>
     </div>
-    <img class="decorationImage" src="images/thor-alpha.png" alt="Decoration image"/>
+    <img id="loginDecoration" src="images/thor-alpha.png" alt="Decoration image"/>
 </div>

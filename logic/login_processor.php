@@ -6,6 +6,7 @@
         header("Location: ../403.php");
         exit;
     }
+    
     else if(!(isset($_POST["loginBtn"]) and isset($_POST["email"]) and isset($_POST["password"]))){
         http_response_code(400);
         die("Incomplete input data.");

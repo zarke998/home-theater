@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(isset($_SESSION["user"])){
-        $username = $_SESSION["user"]->email;
-        $_SESSION["addContentSuccess"] = "Welcome $username";
+    if(!isset($_SESSION["user"])){
+        header("Location: ../403.php");
+        exit;
     }
 
     $pageTitle = "HomeTheater - Manage content library";

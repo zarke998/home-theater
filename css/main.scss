@@ -103,7 +103,7 @@ a{
     height: 600px;
     overflow-y: hidden;
 }
-.decorationImage{
+#loginDecoration{
     position: absolute;
     right: 0px;
     bottom: -125px;
@@ -155,7 +155,12 @@ a{
 
 
 
-// MANAGE CONTENT LIBRARY 
+////////////////////////////////////////////////////////////////// MANAGE CONTENT LIBRARY 
+#manageLibraryContainer{
+    h1{
+        font-size: 32px;
+    }
+}
 #newContentPanel{
     background-color: rgba(0,0,0, 0.5);
     position: fixed;
@@ -171,7 +176,7 @@ a{
 
     &Dialog{
         width: 800px;
-        height: 500px;
+        max-height: 500px;
         overflow: auto;
 
         position: relative;
@@ -230,6 +235,95 @@ a{
     &:hover{
         cursor: pointer;
     }
+}
+
+.manageContentItem{
+    display: flex;
+
+    >div:first-child{
+        flex: 0 0 130px;
+        img{
+            width: 100%;
+        }
+    }
+    >div:nth-child(2){
+        flex-grow: 1;
+
+        overflow: hidden;
+    }  
+    h3{
+        font-size: 24px;
+    }
+    p{
+        display: block;
+        width: 100%;
+
+        margin-bottom: 5px;
+        font-size: 18px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    button{
+        width: 50%;
+        padding: 0px;
+        font-size: 16px;
+        
+        display: block;
+        margin: 0px auto;
+    }
+
+    .deleteBtn{
+        user-select: none;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+#search{
+    background-color: $primaryBlack;
+    color: white;
+    font-size: 18px;
+
+    border: 1px solid white;
+    border-radius: 1000px;
+    
+    padding: 5px 20px;
+    padding-left: 20px;
+    height: 35px;
+
+    &:focus{
+        outline: none;
+    }
+    
+}
+#loadMoreContent{
+    display: block;
+    width: 150px;
+    height: 35px;
+    padding: 0px;
+    &:focus{
+        outline: none;
+    }
+    i{
+        height: 100%;
+        font-size: 32px;
+    }
+}
+//////////////////////////////////////////////////////////////////////////// REGISTER
+#registerDecoration{
+    position: absolute;
+
+    right: 150px;
+    bottom: 0px;
+    
+    display: block;
+    height: 550px;
+    z-index: -1;
+}
+#registerContainer{
+    min-height: 600px;
+    overflow-y: hidden;
 }
 
 
@@ -366,6 +460,9 @@ a{
     height: 100%;
     overflow: hidden;
 }
+.non-clickable{
+    pointer-events: none;
+}
 
 // CUSTOM SPACING CLASSES
 .ht-px-7{
@@ -382,7 +479,10 @@ a{
     border-width: 2px;
 }
 
-//PLUGIN CLASSES
-
-        // MULTISELECT WITH CHECKBOXES
-        
+// BROWSER DEFAULTS OVERRIDE
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
