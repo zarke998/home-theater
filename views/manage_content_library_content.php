@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                            <div class="ht-inline-form-group">
+                                <div class="ht-inline-form-group">
                                     <label>Content type:</label>
                                     <select id="contentTypesDropdown" name="content_type">
                                     </select>
@@ -143,11 +143,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12 px-0">
+                                <textarea name="description" class="w-75 h-input-text" rows="4" placeholder="Enter description here..."></textarea>
+                            </div>
                         </div>
                     </div>
                     <div id="errorInfo" class="invalid-feedback text-right mb-2"></div>
                     <button id="addContentBtn" type="submit" name="addBtn" value="add" class="d-block w-25 ml-auto mb-2 ht-btn">Add</button>
-                    <button id="updateContentBtn" type="submit" name="updateBtn" value="update" class="d-none w-25 ml-auto mb-2 ht-btn">Edit</button>
+                    <button id="updateContentBtn" type="button" name="updateBtn" value="update" class="d-none w-25 ml-auto mb-2 ht-btn">Edit</button>
                 </div>
             </form>
         </div>

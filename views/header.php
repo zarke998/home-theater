@@ -28,9 +28,12 @@
                 </li>
             </ul>
         </div>
-        
     </nav>
 
-    <div class="intro <?php if(isset($isIntroSmaller) && $isIntroSmaller) echo "smallerIntro"; ?>">
-    
+    <div class="intro<?php if(isset($isIntroSmaller) && $isIntroSmaller) echo " smallerIntro"; ?>">
+        <?php 
+            if(isset($headerText)){
+                echo "<h1>$headerText</h1>";
+            }
+        ?>
     </div>

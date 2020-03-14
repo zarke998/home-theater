@@ -16,6 +16,10 @@
         $rating = $_POST["rating"];
         $metascore = $_POST["metascore"];
         $contentType = $_POST["content_type"];
+        $description = $_POST["description"];
+
+        if($description == "")
+            $description = null;
 
         $categories = $_POST["categories"];
         $resolutions = $_POST["resolutions"];
@@ -27,8 +31,8 @@
         $conn->beginTransaction();
 
         // ADD CONTENT
-        $contentQuery = "INSERT INTO content(id,title,year_released,runtime,rating,metascore,content_types_id)
-                                    VALUES(NULL,:title,:year,:runtime,:rating,:metascore,:contentType);";
+        $contentQuery = "INSERT INTO content(id,title,description,year_released,runtime,rating,metascore,content_types_id)
+                                    VALUES(NULL,:title,:description,:year,:runtime,:rating,:metascore,:contentType);";
         $stmContent = $conn->prepare($contentQuery);
         $stmContent->bindParam(":title",$title);
         $stmContent->bindParam(":year",$year);
@@ -36,6 +40,7 @@
         $stmContent->bindParam(":rating",$rating);
         $stmContent->bindParam(":metascore",$metascore);
         $stmContent->bindParam(":contentType",$contentType);
+        $stmContent->bindParam(":description",$description);
 
         $stmContent->execute();
 

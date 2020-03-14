@@ -16,12 +16,15 @@ $(document).ready(function(){
     $("#wallpaperImagesBtn").change(showWallpaperNames);
 
     $("#addContentBtn").click(addNewContent);
+    $("#updateContentBtn").click(updateContent);
 
     $("#contentTypesSelect").change(loadContentOfType);
     $("#loadMoreContent").click(function(){
         let contentType = $("#contentTypesSelect").val();
-        loadContentItems(contentType, offset);
+        let search = $("#search").val();
+        loadContentItems(contentType, offset, search);
     });
+    $("#search").blur(searchContent);
 
     loadContentItems(1,0);
 });
@@ -63,7 +66,12 @@ function closeNewContentDialog(){
     $("#newContentPanelDialog input[type=file]").prop("disabled",false);
     $("#errorInfo").removeClass("d-block");
 
+    $("#addContentBtn").removeClass("d-none");
+    $("#addContentBtn").addClass("d-block");
 
+    $("#updateContentBtn").removeClass("d-block");
+
+    
     $("form").trigger("reset");
 }
 function toggleMultiselect(){
@@ -134,7 +142,7 @@ function showWallpaperNames(){
 }
 function addNewContent(){
 
-    let $errorInfo = $(this).prev();
+    let $errorInfo = $("#errorInfo");
     $errorInfo.removeClass("d-block");
     $errorInfo.text("");
 
@@ -212,13 +220,81 @@ function addNewContent(){
     }
     
 }
+function updateContent(){
+    let $errorInfo = $("#errorInfo");
+    $errorInfo.removeClass("d-block");
+    $errorInfo.text("");
+
+    let contentId = $(this).data("id");
+
+    let title = $("input[name=title]").val();
+    if(title == ""){
+        $errorInfo.addClass("d-block");
+        $errorInfo.text("Title can't be empty.");
+        return false;
+    }
+
+    let releaseYear = parseInt($("input[name=releaseYear]").val(), 10);
+    if(isNaN(releaseYear) || releaseYear < 1900){
+        $errorInfo.addClass("d-block");
+        $errorInfo.text("Release year must be greater than 1900.");
+        return false;
+    }
+
+    let runtime = parseInt($("input[name=runtime]").val(),10);
+    if(isNaN(runtime) || runtime < 0){
+        $errorInfo.addClass("d-block");
+        $errorInfo.text("Runtime must be greater than 0.");
+        return false;
+    }
+
+    console.log(title);
+    console.log(releaseYear);
+    console.log(runtime);
+    let rating = parseFloat($("input[name=rating]").val());
+    if(isNaN(rating) || rating < 0 || rating > 5){
+        $errorInfo.addClass("d-block");
+        $errorInfo.text("Rating must be between 0 and 5.0");
+        return false;
+    }
+
+    let metascore = parseInt($("input[name=metascore]").val(),10);
+    if(isNaN(metascore) || metascore < 0 || metascore > 100){
+        $errorInfo.addClass("d-block");
+        $errorInfo.text("Metascore must be between 0 and 100");
+        return false;
+    }
+
+    let description = $("textarea[name=description]").val();
+
+    console.log(description);
+
+    ajaxSendToServer("../logic/updateContent.php",
+    {
+        id: contentId, 
+        title: title, 
+        releaseYear: releaseYear, 
+        runtime: runtime, 
+        rating: rating, 
+        metascore: metascore,
+        description: description
+    }
+    ,function(data){
+        alert(data.message);
+        location.reload();
+    },
+    function(xhr, errMsg, errType){
+        console.log(xhr.responseText);
+    });
+}
 
 function onContentReceived(content){
     if(content.length == 0){
         $("#loadMoreContent").hide();
         return;
     }
-
+    console.log(content);
+    
     let $list = $("#manageContentList");
     for(let c of content){
         $list.append(createContentListItem(c.id,c.title,c.year_released,c.runtime,c.metascore,c.file_path));
@@ -247,6 +323,12 @@ function removeContentItem(){
 function editContent(){
     showNewContentDialog();
     initializeDialogFields(this.value);
+
+    $("#addContentBtn").addClass("d-none");
+    $("#addContentBtn").removeClass("d-block");
+
+    $("#updateContentBtn").addClass("d-block");
+    $("#updateContentBtn").data("id",parseInt(this.value));
 }
 
 function onContentInfoReceive(data){
@@ -257,6 +339,7 @@ function onContentInfoReceive(data){
     $("input[name=runtime]").val(data.info.runtime);
     $("input[name=rating]").val(data.info.rating);
     $("input[name=metascore]").val(data.info.metascore);
+    $("textarea[name=description]").val(data.info.description);
 
     $("#contentTypesDropdown").val(data.info.contentType);
     $("#contentTypesDropdown").prop("disabled", true);
@@ -273,6 +356,16 @@ function onContentInfoError(xhr,errType,errMsg){
     console.log(xhr.responseText);
     console.log(errType);
     console.log(errMsg);
+}
+function searchContent(){
+    let searchString = this.value;
+
+    let contentType = $("#contentTypesSelect").val();
+
+    $("#manageContentList").html("");
+    $("#loadMoreContent").show();
+    offset = 0;
+    loadContentItems(contentType, 0, searchString);
 }
 // FUNCTIONS
 
@@ -318,10 +411,13 @@ function loadContentOfType(){
     let contentTypeId = this.value;
     $("#manageContentList").html("");
     $("#loadMoreContent").show();
+    $("#search").val("");
     loadContentItems(contentTypeId, 0);
 }
-function loadContentItems(contentTypeId, listOffset){
-    ajaxGetFromServer("../logic/getContentItems.php", {offset: listOffset, contentType: contentTypeId}, onContentReceived, onContentError, false);
+function loadContentItems(contentTypeId, listOffset, searchString){
+    let searchCrit = searchString ? searchString : "";
+    searchCrit = searchCrit.trim();
+    ajaxGetFromServer("../logic/getContentItems.php", {offset: listOffset, contentType: contentTypeId, search: searchCrit}, onContentReceived, onContentError, false);
 }
 function createContentListItem(id, title, yearReleased, runtime, metascore, imgPath){
     let listItem = document.createElement("div");

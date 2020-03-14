@@ -28,10 +28,19 @@ a:hover {
 }
 
 .intro {
+  position: relative;
   height: 700px;
   background-image: url("../images/vin-diesel.jpg");
   background-size: cover;
   background-position-x: center;
+}
+
+.intro h1 {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-size: 42px;
 }
 
 .smallerIntro {
@@ -173,7 +182,7 @@ a:hover {
 
 #newContentPanelDialog {
   width: 800px;
-  max-height: 500px;
+  max-height: 550px;
   overflow: auto;
   position: relative;
   background-color: #080808;
@@ -189,6 +198,10 @@ a:hover {
 #newContentPanelDialog input[name=title] {
   font-size: 28px;
   padding-left: 0px;
+}
+
+#newContentPanelDialog input[name=description] {
+  min-height: 200px;
 }
 
 #newCoverImage {
@@ -260,6 +273,10 @@ a:hover {
 
 .manageContentItem h3 {
   font-size: 24px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .manageContentItem p {
@@ -334,6 +351,265 @@ a:hover {
 #registerContainer {
   min-height: 600px;
   overflow-y: hidden;
+}
+
+.contentListContainer h2 {
+  font-size: 28px;
+}
+
+.contentListWrapper {
+  position: relative;
+}
+
+.contentList {
+  overflow-x: auto;
+  position: relative;
+}
+
+.contentListItem {
+  position: relative;
+  margin-right: 20px;
+}
+
+.contentListItem img {
+  width: 175px;
+}
+
+.contentListItem .contentOverlay {
+  position: absolute;
+  top: 0px;
+  height: 0px;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.contentListItem .contentOverlay > i {
+  display: block;
+  font-size: 42px;
+  color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
+.contentListItem .contentOverlay > i:hover {
+  cursor: pointer;
+}
+
+.contentListItem .contentOverlay .contentInfo {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 0px;
+  padding-left: 10px;
+}
+
+.contentListItem .contentOverlay .contentInfo p {
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-bottom: 0px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 60%;
+          flex: 1 0 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.contentListItem .contentOverlay .contentInfo p:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.contentListItem:hover .contentOverlay {
+  visibility: visible;
+}
+
+.contentListScroll {
+  position: absolute;
+  top: 48%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.contentListScroll i {
+  color: white;
+  border: 1px solid gray;
+  padding: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.contentListScroll i:hover {
+  cursor: pointer;
+}
+
+.contentListScrollLeft {
+  left: 10px;
+}
+
+.contentListScrollRight {
+  right: 10px;
+}
+
+#newReleasesContainer {
+  position: relative;
+  height: 660px;
+}
+
+#newReleasesBackground {
+  content: "";
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+}
+
+#newReleases {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#newReleases div:nth-child(2) h4 {
+  font-size: 32px;
+}
+
+#newReleases .contentListScroll {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+#sliderItemInfo button {
+  width: 150px;
+}
+
+#promoContainer p {
+  font-size: 24px;
+}
+
+#promoContainer button {
+  display: block;
+  width: 175px;
+  margin-top: 5px;
+}
+
+#freeTrialContainer {
+  background-size: cover;
+  background-image: url("../images/free-trial.jpg");
+  height: 550px;
+}
+
+#freeTrialContainer ul li {
+  font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#freeTrialContainer ul li i {
+  font-size: 26px;
+}
+
+#freeTrialContainer button {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#freeTrialContainer button:hover {
+  background-color: black;
+}
+
+#mobileAppContainer {
+  background-size: cover;
+  background-image: url("../images/dracula.jpg");
+  height: 650px;
+  position: relative;
+}
+
+#mobileAppContainer #mobileInfo h2 {
+  font-size: 32px;
+}
+
+#mobileAppContainer #mobileInfo p {
+  font-size: 24px;
+}
+
+#mobileAppContainer #mobileInfoDetails p:first-child {
+  font-size: 26px;
+}
+
+#mobileAppContainer ul li {
+  font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.13);
+}
+
+#mobileAppContainer ul li i {
+  font-size: 26px;
+}
+
+#mobileAppContainer button {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 225px;
+  height: 40px;
+  display: block;
+}
+
+#mobileAppContainer button:hover {
+  background-color: black;
+}
+
+#mobileDecoration {
+  position: absolute;
+  height: 90%;
+  bottom: 0px;
+  right: 200px;
 }
 
 .ht-btn {
@@ -497,6 +773,19 @@ a:hover {
   pointer-events: none;
 }
 
+.ht-yellow-btn {
+  border: 2px solid gray;
+  border-radius: 1000px;
+  background-color: #ffee00;
+  color: black !important;
+  font-weight: bolder;
+  padding: 3px 0px;
+}
+
+.ht-yellow-btn:hover {
+  background-color: #dacb00;
+}
+
 .ht-px-7 {
   padding: 0px 5rem;
 }
@@ -513,5 +802,17 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
+}
+
+.contentList {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.contentList::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 /*# sourceMappingURL=main.css.map */

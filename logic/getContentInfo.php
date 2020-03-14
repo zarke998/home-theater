@@ -10,7 +10,7 @@
     
     $id = $_POST["id"];
 
-    $contentInfoQuery = "SELECT content.id AS content_id, title, year_released, rating, runtime, metascore, 
+    $contentInfoQuery = "SELECT content.id AS content_id, title,description, year_released, rating, runtime, metascore, 
                                 content_types_id, con_res.resolution_id AS res_id, con_img.id AS img_id, file_name, file_path, isCover,isThumbnail, con_cat.category_id AS cat_id 
                                 FROM content 
                                 INNER JOIN content_categories as con_cat ON content.id = con_cat.content_id 
@@ -25,6 +25,7 @@
     
     $contentInfo = ["id" => $data[0]->content_id, 
                     "title" => $data[0]->title,
+                    "description" => $data[0]->description,
                     "yearReleased" => $data[0]->year_released,
                     "runtime" => $data[0]->runtime,
                     "rating" => $data[0]->rating,
