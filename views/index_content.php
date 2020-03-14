@@ -1,20 +1,34 @@
 <?php 
 
+    $rootPath = $_SERVER["DOCUMENT_ROOT"];
+    $rootPath.= "/home-theater";
+    require_once "$rootPath/logic/dbConnection.php";
+
     if(isset($_SESSION["user"])){
         $user = $_SESSION["user"];
+
+        $movieCategories = getAvailableContentCategories(1);
+        $tvShowCategories = getAvailableContentCategories(2);
     }
     else
         $user = null;
 ?>
 
-<div class="container-fluid py-5">
-    <div class="contentListContainer mb-5 px-1">
+<div class="container-fluid py-5 d-flex flex-column">
+
+    <?php 
+        if($user == null)
+            $order = "1";
+        else
+            $order = "6";
+
+    ?>
+    <div class="contentListContainer mb-5 px-1 order-<?php echo $order ?>">
         <h2 class="mb-4">Most popular Movies</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
-                if($user != null){
-                    $movies = getMostPopularContent(1);
+                    $movies = getMostPopularContent(1,false);
 
                     foreach($movies as $m): ?>
                     <div class="contentListItem">
@@ -28,20 +42,26 @@
                         </div>
                     </div>
                     <?php endforeach;
-                }
             ?>
             </div>
             <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
             <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
         </div>
     </div>
-    <div class="contentListContainer mb-4 px-1">
+
+    <?php 
+        if($user == null)
+            $order = "2";
+        else
+            $order = "7";
+    ?>
+    <div class="contentListContainer mb-4 px-1 order-<?php echo $order ?>">
         <h2 class="mb-4">Most popular TV Shows</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
-                if($user != null){
-                    $tvShows = getMostPopularContent(2);
+
+                    $tvShows = getMostPopularContent(2,false);
 
                     foreach($tvShows as $tS): ?>
                     <div class="contentListItem">
@@ -55,14 +75,16 @@
                         </div>
                     </div>
                     <?php endforeach;
-                }
             ?>
             </div>
             <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
             <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
         </div>
     </div>
-    <div id="freeTrialContainer" class="row mb-5 px-5 py-5">
+
+    <?php
+        if($user == null): ?>
+    <div id="freeTrialContainer" class="row px-5 py-5 order-3">
         <div class="col-6">
             <h2 class="text-center mb-5">Start your Free Trial</h2>
             <ul>
@@ -74,12 +96,13 @@
         </div>
         <div class="col-6"></div>
     </div>
-    <div class="contentListContainer mb-5 px-1">
+    <?php endif; ?>
+
+    <div class="contentListContainer mb-5 mt-4 px-1 order-4">
         <h2 class="mb-4">4K Movies</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
-                if($user != null){
                     $movies = getContentByResolution(1,2);
 
                     foreach($movies as $m): ?>
@@ -94,14 +117,20 @@
                         </div>
                     </div>
                     <?php endforeach;
-                }
             ?>
             </div>
             <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
             <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
         </div>
     </div>
-    <div id="newReleasesContainer" class="row py-4">
+
+    <?php 
+        if($user == null)
+            $order = "5";
+        else
+            $order = "3";
+    ?>
+    <div id="newReleasesContainer" class="row py-4 order-<?php echo $order?>">
         <div id="newReleasesBackground"></div>
         <div class="col-12 mb-4">
             <h2 class="text-center mb-5">New releases</h2>
@@ -130,11 +159,26 @@
             </div>
         </div>
     </div>
-    <div id="promoContainer" class="d-flex justify-content-between align-items-center px-4 py-2">
+
+    <?php 
+        if($user == null){
+            $order = "6";
+        }
+
+        if($user == null): ?>
+    <div id="promoContainer" class="d-flex justify-content-between align-items-center px-4 py-2 order-<?=$order?>">
         <p class="mb-0">Have a promo code? Get 3 months of free subscription, and watch anything you want.</p>
         <button type="button" class="ht-yellow-btn">Enter code now!</button>
     </div>
-    <div id="mobileAppContainer" class="row mb-5 px-5 py-5">
+    <?php endif; ?>
+
+    <?php 
+        if($user == null)
+            $order = "7";
+        else
+            $order = "5";
+    ?>
+    <div id="mobileAppContainer" class="row mb-5 px-5 py-5 order-<?=$order?>">
         <img id="mobileDecoration" src="images/phone-frame.png" alt="Decoration" ></img>
         <div id="mobileInfo"class="col-8">
             <h2 class="mb-4">Download our mobile app!</h2>
@@ -153,19 +197,99 @@
         </div>
         <div class="col-4"></div>
     </div>
-    <div class="contentListContainer mb-4 px-1">
-        <h2 class="mb-4">Most popular TV Shows</h2>
+
+    <?php 
+        if($user == null){
+            $order = "8";
+        }
+        if($user == null): ?>
+    <div class="contentListContainer mb-5 px-1 order-<?=$order?>">
+        <h2 class="mb-4">Best rated Movies by critics</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
-                if($user != null){
-                    $tvShows = getMostPopularContent(2);
+                    $movies = getMostPopularContent(1,true);
+
+                    foreach($movies as $m): ?>
+                    <div class="contentListItem">
+                        <img src="<?=substr($m->file_path,3)?>" alt="Cover">
+                        <div class="contentOverlay">
+                            <i class="material-icons">favorite</i>
+                            <div class="contentInfo">
+                                <p><?=$m->title?></p>
+                                <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach;
+            ?>
+            </div>
+            <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
+            <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- authorized -->
+    <?php 
+        if($user != null){
+            $randCat = rand(0, count($movieCategories) - 1);
+
+            $catId = $movieCategories[$randCat]->cat_id;
+            $catName = $movieCategories[$randCat]->cat_name;
+        }
+        
+        if($user != null) : ?>
+    <div class="contentListContainer mb-5 px-1 order-1">
+        <h2 class="mb-4">Best Movies - <?=$catName?></h2>
+        <div class="contentListWrapper">
+            <div class="contentList d-flex">
+                <?php
+
+                    $movies = getContentByCategory(1, $catId);
+
+                    foreach($movies as $m): ?>
+                    <div class="contentListItem">
+                        <img src="<?=substr($m->file_path,3)?>" alt="Cover">
+                        <div class="contentOverlay">
+                            <i class="material-icons">favorite</i>
+                            <div class="contentInfo">
+                                <p><?=$m->title?></p>
+                                <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach;
+            ?>
+            </div>
+            <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
+            <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <?php 
+        if($user != null) {
+            $randCat = rand(0, count($tvShowCategories) - 1);
+
+            $catId = $tvShowCategories[$randCat]->cat_id;
+            $catName = $tvShowCategories[$randCat]->cat_name;
+        }
+        if($user != null):
+         ?>
+    <div class="contentListContainer mb-5 px-1 order-2">
+        <h2 class="mb-4">Best TV Shows - <?=$catName?></h2>
+        <div class="contentListWrapper">
+            <div class="contentList d-flex">
+                <?php
+
+                    $tvShows = getContentByCategory(2, $catId);
 
                     foreach($tvShows as $tS): ?>
                     <div class="contentListItem">
                         <img src="<?=substr($tS->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons" data-id="<?$tS->id?>">favorite</i>
+                            <i class="material-icons">favorite</i>
                             <div class="contentInfo">
                                 <p><?=$tS->title?></p>
                                 <p><?=$tS->rating?> <i class="material-icons ml-1">star</i></p>
@@ -173,21 +297,49 @@
                         </div>
                     </div>
                     <?php endforeach;
-                }
             ?>
             </div>
             <div class="contentListScroll contentListScrollLeft" data-dir="-1"><i class="material-icons">keyboard_arrow_left</i></div>
             <div class="contentListScroll contentListScrollRight" data-dir="1"><i class="material-icons">keyboard_arrow_right</i></div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
+
 <?php 
+    function getContentByCategory($contentType,$category){
+        global $conn;
+
+        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
+                        INNER JOIN content_categories AS con_cat ON con_cat.content_id=content.id
+                        INNER JOIN content_images AS con_img ON con_img.content_id = content.id
+                        WHERE content_types_id=:contentType AND isCover=1 AND con_cat.category_id=:category
+                        LIMIT 25 OFFSET 0;";
+        
+        $stm = $conn->prepare($selectQuery);
+        $stm->bindParam(":contentType", $contentType);
+        $stm->bindParam(":category", $category);
+        $stm->execute();
+        
+        return $stm->fetchAll();
+    }
+    function getAvailableContentCategories($contentType){
+        global $conn;
+
+        $selectQuery = "SELECT DISTINCT category_id AS cat_id, categories.name AS cat_name FROM content_categories
+                        INNER JOIN content ON content.id = content_categories.content_id
+                        INNER JOIN categories ON categories.id=content_categories.category_id
+                        WHERE content_types_id = :contentType;";
+        $stm = $conn->prepare($selectQuery);
+        $stm->bindParam(":contentType", $contentType);
+        $stm->execute();
+        
+        return $stm->fetchAll();
+        }
     function getContentByResolution($contentType, $resolution){
-        $rootPath = $_SERVER["DOCUMENT_ROOT"];
-        $rootPath.= "/home-theater";
-        require "$rootPath/logic/dbConnection.php";   
-    
+ 
+        global $conn;
         $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
                         INNER JOIN content_resolutions AS con_res ON con_res.content_id = content.id
                         INNER JOIN content_images AS con_img ON con_img.content_id = content.id
@@ -201,21 +353,27 @@
 
         return $stm->fetchAll();
     }
-    function getMostPopularContent($contentType){
+    function getMostPopularContent($contentType, $byCritics){
         // die("blabla");
-        $rootPath = $_SERVER["DOCUMENT_ROOT"];
-        $rootPath.= "/home-theater";
-        require "$rootPath/logic/dbConnection.php";
+
         // if(isset($_GET["contentType"])){
         //     http_response_code(400);
         //     die("Incomplete input data.");
         // }
 
         // $contentType = $_GET["contentType"];
+
+        global $conn;
+
+        if($byCritics)
+            $orderCrit = "metascore";
+        else
+            $orderCrit = "rating";
+        
         $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
                         INNER JOIN content_images AS con_img ON con_img.content_id = content.id
                         WHERE content_types_id=:contentType AND isCover=1
-                        ORDER BY rating DESC
+                        ORDER BY $orderCrit DESC
                         LIMIT 25 OFFSET 0;";
 
         $stm = $conn->prepare($selectQuery);
