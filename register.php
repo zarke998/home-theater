@@ -2,7 +2,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        header("Location: auth/manage_content_library.php");
+        header("Location: index.php");
         exit;
     }
 
@@ -14,6 +14,6 @@
 
     require_once "views/register_content.php";
 
-    $scripts = ["register.js"];
+    $scripts = ["main.js","register.js"];
     require_once "views/footer.php";
 ?>

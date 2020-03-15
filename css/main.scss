@@ -63,6 +63,7 @@ a{
 }
 .navigationContainer{
     background-color: rgba(0,0,0,0.3) !important;
+    // border-bottom: 1px solid rgb(56, 56, 56);
 }
 
 .navigationMenu{
@@ -97,18 +98,6 @@ a{
     color: $textColorDefault !important;
 }
 
-.account{
-    position: fixed;
-    right: 20px;
-    top: 12px;
-    i{
-        font-size: 36px;
-        &:hover{
-            cursor: pointer;
-            user-select: none;
-        }
-    }
-}
 
 #loginContainer{
     height: 600px;
@@ -399,17 +388,19 @@ a{
             justify-content: space-between;
             padding: 5px 0px;
             padding-left: 10px;
+            overflow: hidden;
             p{
                 display: block;
                 user-select: none;
                 margin-bottom: 0px;
-
+            }
+            p:first-child{
                 flex: 1 0 60%;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-
             }
+            
             p:nth-child(2){
                 display: flex;
                 align-items: center;
@@ -559,6 +550,73 @@ a{
     height: 90%;
     bottom: 0px;
     right: 200px;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////// ALL PAGES
+.account{
+    position: fixed;
+    right: 20px;
+    top: 12px;
+    i{
+        font-size: 36px;
+        &:hover{
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    div:first-child{
+        position: relative;
+    }
+}
+.accountPanel{
+    position: absolute;
+    right: 0px;
+    top: 62px;
+
+    display: none;
+    width: 250px;
+    padding: 15px;
+
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid gray;
+
+    .accountInfo{
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid gray;
+        span{
+            
+            font-size: 28px;
+        }
+    }
+    .accountLinks{
+        li{
+            font-size: 18px;
+            margin: 5px 0px;
+        }
+    }
+}
+#logoutBtn{
+    background: none;
+    border: none;
+    color: white;
+}
+////////////////////////////////////////////////////////////// 403
+#containerUnauthorized{
+    height: 600px;
+    position: relative;
+    p{
+        font-size: 24px;
+    }
+    img{
+        display: block;
+        position: absolute;
+        right: 200px;
+        bottom: 0px;
+        z-index: -1;
+
+        height: 90%;
+    }
 }
 // CUSTOM CLASSES
 .ht-btn{
@@ -711,7 +769,24 @@ a{
         background-color: darken(rgb(223, 208, 0), 1%);
     }
 }
-
+.ht-input-search{
+    
+}
+/////////////////////////////////////////////////////////////////// MOVIES
+#moviesContainer{
+    h1{
+        font-size: 32px;
+    }
+}
+#contentListFull{
+    >div{
+        width: 14.2%;
+        margin: 0px;
+        img{
+            width: 100%;
+        }
+    }
+}
 // CUSTOM SPACING CLASSES
 .ht-px-7{
     padding: 0px 5rem;

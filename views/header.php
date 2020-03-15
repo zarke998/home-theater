@@ -1,3 +1,18 @@
+<?php 
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $rootPath = $_SERVER["DOCUMENT_ROOT"];
+    $rootPath.= "/home-theater";
+    require_once "$rootPath/logic/menuFetcher.php";
+
+    if(isset($_SESSION["user"]))
+        $user = $_SESSION["user"];
+    else
+        $user = null;
+
+?>
 <body>
 
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top py-0 navigationContainer">
@@ -6,26 +21,88 @@
         </button>
         <a class="navbar-brand d-md-none mx-auto websiteTitle" href="#">HomeTheater</a>
         <div class="account">
-            <i class="material-icons medium">account_circle</i>
+            <div>
+                <i id="accountBtn" class="material-icons medium">account_circle</i>
+                <?php 
+                    if($user != null): ?>
+                <div class="accountPanel">
+                    <div class="d-flex align-items-center accountInfo">
+                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2"> Account </span>
+                    </div>
+                    <ul class="accountLinks text-center mb-0">
+                        <!-- <li><a href="#">Bookmark list</a></li> -->
+                        <?php
+                            $items = getMenuItems("authorized_acc_menu");
+                            if($user->role_id == 1){
+                                foreach($items as $i) {
+                                    echo "<li><a href='$i->href'>$i->item_name</a></li>";
+                                }
+                            }
+                            else{
+                                foreach($items as $i) {
+                                    if($i->role_id == $user->role_id){
+                                        echo "<li><a href='$i->href'>$i->item_name</a></li>";
+                                    }
+                                }
+                            }
+                        
+                            
+                        ?>
+                        <li class="border-top mt-2 pt-2">
+                            <form action="/home-theater/logout.php" method="GET">
+                                <button type="submit" name="logoutBtn" value="on" id="logoutBtn" href="#">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+                <?php else: ?>
+                <div class="accountPanel">
+                    <div class="d-flex align-items-center accountInfo">
+                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2"> Account </span>
+                    </div>
+                    <ul class="accountLinks text-center mb-0">
+                        <li><a href="http://localhost/home-theater/login.php">Login</a></li>
+                        <li><a href="http://localhost/home-theater/register.php">Register</a></li>
+                    </ul>
+                </div>
+
+                <?php endif;?>
+            </div>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mx-auto my-0 navigationMenu">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Movies</a>
-                </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">TV Shows</a>
                 </li>
                 <li class="nav-item d-none d-md-inline websiteTitle">
                     <a class="nav-link" href="#">HomeTheater</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
+                </li> -->
+                <?php
+                    $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                    $rootPath.= "/home-theater";
+                    require_once "$rootPath/logic/menuFetcher.php";
+
+                    $items = getMenuItems("nav_menu");
+                    for($i = 0; $i < (int)count($items)/2; $i++): ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                    </li>
+                    <?php endfor;
+                    
+            
+                    echo '<li class="nav-item d-none d-md-inline websiteTitle">
+                            <a class="nav-link" href="/home-theater/index.php">HomeTheater</a>
+                        </li>';
+                    
+                    for($i = count($items)/2; $i < count($items); $i++): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                        </li>
+                    <?php endfor;
+                ?>
+                
             </ul>
         </div>
     </nav>

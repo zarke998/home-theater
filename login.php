@@ -14,6 +14,6 @@
 
     require_once "views/login_content.php";
 
-    $scripts = ["login.js"];
+    $scripts = ["main.js","login.js"];
     require_once "views/footer.php";
 ?>

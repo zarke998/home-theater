@@ -47,5 +47,5 @@
     $_SESSION["user"] = $user;
 
     header("Conent-Type: application/json");
-    echo json_encode(["redirect" => "auth/manage_content_library.php"]);
+    echo json_encode(["redirect" => "http://localhost/home-theater/index.php"]);
 ?>

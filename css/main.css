@@ -86,24 +86,6 @@ a:hover {
   color: #f0f0f0 !important;
 }
 
-.account {
-  position: fixed;
-  right: 20px;
-  top: 12px;
-}
-
-.account i {
-  font-size: 36px;
-}
-
-.account i:hover {
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 #loginContainer {
   height: 600px;
   overflow-y: hidden;
@@ -422,6 +404,7 @@ a:hover {
           justify-content: space-between;
   padding: 5px 0px;
   padding-left: 10px;
+  overflow: hidden;
 }
 
 .contentListItem .contentOverlay .contentInfo p {
@@ -431,6 +414,9 @@ a:hover {
       -ms-user-select: none;
           user-select: none;
   margin-bottom: 0px;
+}
+
+.contentListItem .contentOverlay .contentInfo p:first-child {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 60%;
           flex: 1 0 60%;
@@ -612,6 +598,78 @@ a:hover {
   right: 200px;
 }
 
+.account {
+  position: fixed;
+  right: 20px;
+  top: 12px;
+}
+
+.account i {
+  font-size: 36px;
+}
+
+.account i:hover {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.account div:first-child {
+  position: relative;
+}
+
+.accountPanel {
+  position: absolute;
+  right: 0px;
+  top: 62px;
+  display: none;
+  width: 250px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid gray;
+}
+
+.accountPanel .accountInfo {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid gray;
+}
+
+.accountPanel .accountInfo span {
+  font-size: 28px;
+}
+
+.accountPanel .accountLinks li {
+  font-size: 18px;
+  margin: 5px 0px;
+}
+
+#logoutBtn {
+  background: none;
+  border: none;
+  color: white;
+}
+
+#containerUnauthorized {
+  height: 600px;
+  position: relative;
+}
+
+#containerUnauthorized p {
+  font-size: 24px;
+}
+
+#containerUnauthorized img {
+  display: block;
+  position: absolute;
+  right: 200px;
+  bottom: 0px;
+  z-index: -1;
+  height: 90%;
+}
+
 .ht-btn {
   border: 2px solid white;
   border-radius: 1000px;
@@ -784,6 +842,19 @@ a:hover {
 
 .ht-yellow-btn:hover {
   background-color: #dacb00;
+}
+
+#moviesContainer h1 {
+  font-size: 32px;
+}
+
+#contentListFull > div {
+  width: 14.2%;
+  margin: 0px;
+}
+
+#contentListFull > div img {
+  width: 100%;
 }
 
 .ht-px-7 {

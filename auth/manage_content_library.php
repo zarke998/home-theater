@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION["user"])){
+    if(!isset($_SESSION["user"]) or $_SESSION["user"]->role_id != 1){
         header("Location: ../403.php");
         exit;
     }
@@ -14,7 +14,7 @@
 
     require_once "../views/manage_content_library_content.php";
 
-    $scripts = ["manage-content-library.js"];
+    $scripts = ["main.js","manage-content-library.js"];
     if(isset($_SESSION["addContentError"])){
         $alertMsg = $_SESSION["addContentError"];
         unset($_SESSION["addContentError"]);

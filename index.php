@@ -10,6 +10,6 @@
 
     require_once "views/index_content.php";
 
-    $scripts = ["index.js"];
+    $scripts = ["main.js","index.js"];
     require_once "views/footer.php";
 ?>

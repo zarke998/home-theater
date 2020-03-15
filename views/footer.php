@@ -5,34 +5,72 @@
                     <div class="col-3">
                         <h3>General</h3>
                         <ul>
-                            <li><a href="#">Movies</a></li>
-                            <li><a href="#">TV Shows</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About</a></li>
+                        <?php 
+                            $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                            $rootPath.= "/home-theater";
+                            require_once "$rootPath/logic/menuFetcher.php";
+
+                            $items = getMenuItems("nav_menu");
+                            
+                            for($i = 0; $i < count($items); $i++): ?>
+                            <li>
+                                <a href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                            </li>
+                            <?php endfor;
+                        ?>
                         </ul>
                     </div>
                     <div class="col-3">
                         <h3>Socials</h3>
                         <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Instagram</a></li>
+                        <?php 
+                            $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                            $rootPath.= "/home-theater";
+                            require_once "$rootPath/logic/menuFetcher.php";
+
+                            $items = getMenuItems("socials_menu");
+                            
+                            for($i = 0; $i < count($items); $i++): ?>
+                            <li>
+                                <a href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                            </li>
+                            <?php endfor;
+                        ?>
                         </ul>
                     </div>
                     <div class="col-3">
                         <h3>Legal</h3>
                         <ul>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Disclaimer</a></li>
-                            <li><a href="#">DMCA</a></li>
+                        <?php 
+                            $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                            $rootPath.= "/home-theater";
+                            require_once "$rootPath/logic/menuFetcher.php";
+
+                            $items = getMenuItems("legal_menu");
+                            
+                            for($i = 0; $i < count($items); $i++): ?>
+                            <li>
+                                <a href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                            </li>
+                            <?php endfor;
+                        ?>
                         </ul>
                     </div><div class="col-3">
                         <h3>Account</h3>
                         <ul>
-                            <li><a href="#">Report a problem</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
+                        <?php 
+                            $rootPath = $_SERVER["DOCUMENT_ROOT"];
+                            $rootPath.= "/home-theater";
+                            require_once "$rootPath/logic/menuFetcher.php";
+
+                            $items = getMenuItems("account_footer_menu");
+                            
+                            for($i = 0; $i < count($items); $i++): ?>
+                            <li>
+                                <a href="<?=$items[$i]->href?>"><?=$items[$i]->item_name?></a>
+                            </li>
+                            <?php endfor;
+                        ?>
                         </ul>
                     </div>
                 </div>

@@ -7,4 +7,9 @@
 
     foreach($stm->fetchAll() as $c)
         $categories[] = $c;
+
+    if(isset($_POST["ajax"])){
+        header("Content-Type: application/json");
+        echo json_encode($categories);
+    }
 ?>
