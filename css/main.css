@@ -1,3 +1,80 @@
+.mdi::before {
+  font-size: 24px;
+  line-height: 14px;
+}
+
+.btn .mdi::before {
+  position: relative;
+  top: 4px;
+}
+
+.btn-xs .mdi::before {
+  font-size: 18px;
+  top: 3px;
+}
+
+.btn-sm .mdi::before {
+  font-size: 18px;
+  top: 3px;
+}
+
+.dropdown-menu .mdi {
+  width: 18px;
+}
+
+.dropdown-menu .mdi::before {
+  position: relative;
+  top: 4px;
+  left: -8px;
+}
+
+.nav .mdi::before {
+  position: relative;
+  top: 4px;
+}
+
+.navbar .navbar-toggle .mdi::before {
+  position: relative;
+  top: 4px;
+  color: #FFF;
+}
+
+.breadcrumb .mdi::before {
+  position: relative;
+  top: 4px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+
+.breadcrumb a:hover span {
+  text-decoration: underline;
+}
+
+.alert .mdi::before {
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
+}
+
+.input-group-addon .mdi::before {
+  position: relative;
+  top: 3px;
+}
+
+.navbar-brand .mdi::before {
+  position: relative;
+  top: 2px;
+  margin-right: 2px;
+}
+
+.list-group-item .mdi::before {
+  position: relative;
+  top: 3px;
+  left: -3px;
+}
+
 @font-face {
   font-family: "Segoe UI";
   src: url("../fonts/Segoe UI.woff");
@@ -854,6 +931,37 @@ a:hover {
 
 #contentListFull > div img {
   width: 100%;
+}
+
+#contactContainer h1 {
+  font-size: 32px;
+}
+
+#contactContainer h2 {
+  font-size: 28px;
+}
+
+#contactContainer h3 {
+  font-size: 28px;
+}
+
+#contactSocials a {
+  width: 8%;
+  margin: 0px 5px;
+}
+
+#contactSocials a img {
+  width: 100%;
+}
+
+#contactSocials a img:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+#youtubePlayer iframe {
+  width: 100%;
+  height: 300px;
 }
 
 .ht-px-7 {
