@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    $pageTitle = "HomeTheater - Contact";
+    $pageTitle = "HomeTheater - About";
     require_once "views/head.php";
 
     $isIntroSmaller = true;
@@ -9,6 +9,6 @@
 
     require_once "views/about_content.php";
 
-    $scripts = ["main.js","index.js"];
+    $scripts = ["main.js","about.js"];
     require_once "views/footer.php";
 ?>

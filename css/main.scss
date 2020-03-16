@@ -883,6 +883,72 @@ a{
         height: 300px;
     }
 }
+//////////////////////////////////////////////////////////////////////////// ABOUT
+#aboutContainer{
+    h1{
+        font-size: 32px;
+    }
+}
+#profileImage{
+    border: 1px solid gray;
+}
+#aboutInfo{
+    font-size: 24px;
+    ul{
+        li{
+            a{
+                &:hover{
+                    color: #be0000;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+#businessContainer{
+    h3{
+        font-size: 28px;
+    }
+}
+///////////////////////////////////////////////////////////////////////////// BOOKMARKS
+#bookmarksContainer{
+    h1{
+        font-size: 32px;
+    }
+    h2{
+        font-size: 28px;
+    }
+}
+#bookmarksListContainer{
+
+}
+#bookmarksList{
+    overflow-y: auto;
+    overflow-x: visible;
+    height: 500px;
+}
+.bookmarkListItem{
+    >div:nth-child(2){
+        font-size: 24px;
+    }
+    img{
+        width: 50px;
+    }
+    .favoriteBtn{
+        user-select: none;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+#bookmarksDecoration{
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+    z-index: -1;
+
+    height: 90%;
+}
 // CUSTOM SPACING CLASSES
 .ht-px-7{
     padding: 0px 5rem;

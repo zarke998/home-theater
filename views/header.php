@@ -27,7 +27,9 @@
                     if($user != null): ?>
                 <div class="accountPanel">
                     <div class="d-flex align-items-center accountInfo">
-                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2"> Account </span>
+                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2 mb-1"><?php 
+                            echo explode("@",$user->email)[0];
+                        ?> </span>
                     </div>
                     <ul class="accountLinks text-center mb-0">
                         <!-- <li><a href="#">Bookmark list</a></li> -->
@@ -59,7 +61,7 @@
                 <?php else: ?>
                 <div class="accountPanel">
                     <div class="d-flex align-items-center accountInfo">
-                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2"> Account </span>
+                        <i class="material-icons d-block">account_circle</i><span class="d-block ml-2 mb-1"> Account </span>
                     </div>
                     <ul class="accountLinks text-center mb-0">
                         <li><a href="http://localhost/home-theater/login.php">Login</a></li>

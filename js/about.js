@@ -1,35 +1,24 @@
 $(document).ready(function(){
-    $("#contactBtn").click(sendContactData);
+    $("#businessBtn").click(sendBusinessData);
 });
 
-function sendContactData(){
-    let $feedback = $("#contactFeedback");
+function sendBusinessData(){
+    let $feedback = $("#businessFeedback");
     $feedback.removeClass("d-block");
     $feedback.text();
 
-    let $email = $("#contactEmail");
+    let $email = $("#businessEmail");
     $email.removeClass("is-invalid");
 
-    let $subject = $("#contactSubject");
-    $subject.removeClass("is-invalid");
+    let $message = $("#businessMessage");
 
-    let $message = $("#contactMessage");
-    $message.removeClass("is-invalid");
 
     let emailReg = /^[a-z]+[a-z\d]{2,}@[a-z]{2,}(\.[a-z]{2,})*$/;
-    let subjectReg = /^[A-z\d-]+(\s([A-z\d-]+))*$/;
 
     if(!emailReg.test($email.val())){
         $email.addClass("is-invalid");
         $feedback.addClass("d-block");
         $feedback.text("Invalid email format. Email must start with a letter and contain only letters and numbers.");
-        return;
-    }
-
-    if(!subjectReg.test($subject.val())){
-        $subject.addClass("is-invalid");
-        $feedback.addClass("d-block");
-        $feedback.text("Subject can only contain letters and numbers.");
         return;
     }
 
@@ -40,20 +29,18 @@ function sendContactData(){
         return;
     }
 
-    ajaxSendToServer("logic/contact_processor.php",{
+    ajaxSendToServer("logic/business_processor.php",{
         email: $email.val(),
-        subject: $subject.val(),
         message: $message.val(),
-        contactBtn: "on"
-    }, onContactDataSent, onContactDataError);
+        businessBtn: "on"
+    }, onBusinessDataSent, onBusinessDataError);
 }
-function onContactDataSent(data){
+function onBusinessDataSent(data){
     alert(data.message);
-    $("#contactEmail").val("");
-    $("#contactSubject").val("");
-    $("#contactMessage").val("");
+    $("#businessEmail").val("");
+    $("#businessMessage").val("");
 }
-function onContactDataError(xhr, errType, errMsg){
+function onBusinessDataError(xhr, errType, errMsg){
     alert(xhr.responseText);
 }
 

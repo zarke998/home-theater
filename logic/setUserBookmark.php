@@ -34,9 +34,10 @@
         }
         else if($setState == BOOKMARK_SET_STATE_DELETE){
             $bookmarkSetQuery = "DELETE FROM user_bookmarks
-                                WHERE user_id=:userId";
+                                WHERE user_id=:userId AND content_id=:contentId";
             $bookmarkStm = $conn->prepare($bookmarkSetQuery);
             $bookmarkStm->bindParam(":userId",$userId);
+            $bookmarkStm->bindParam(":contentId",$contentId);
         }
 
 
