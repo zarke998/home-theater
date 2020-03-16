@@ -8,8 +8,7 @@ $(document).ready(function(){
     $("#contentCategoriesSelect").change(loadCategoryContent);
     $("#search").blur(searchContent);
     $("#contentSortSelect").change(loadSortedContent);
-
-
+    
     loadContentItems(contentType,0,24,0);
 });
 function onContentReceived(content){
@@ -20,8 +19,9 @@ function onContentReceived(content){
 
     let $list = $("#contentListFull");
     for(let c of content){
-        $list.append(createContentListItem(c.id, c.title, c.rating, c.file_path));
+        $list.append(createContentListItem(c));
     }
+    $(".favoriteBtn").click(setUserBookmark);
 
     offset += 24;
 }
@@ -79,6 +79,26 @@ function searchContent(){
 
     loadContentItems(contentType,offset,24,category,search);
 }
+function setUserBookmark(){
+    var contentId = this.dataset.id;
+    var $favoriteBtn = $(this);
+    let setState = $favoriteBtn.text() == "favorite" ? 1 : 0;
+
+    ajaxSendToServer("logic/setUserBookmark.php",{ content_id: contentId, set_state: setState },
+        function(data){
+            alert(data.message);
+
+            if($favoriteBtn.text() == "favorite")
+                $(`.favoriteBtn[data-id="${contentId}"]`).text("favorite_border");
+            else
+                $(`.favoriteBtn[data-id="${contentId}"]`).text("favorite");
+            
+        },
+        function(xhr, errMsg, errType){
+            alert(xhr.responseText);
+        }
+    )
+}
 
 function ajaxGetFromServer(toScript,json,callbackSuccess, callbackError, isAsync) {
     $.ajax({
@@ -97,17 +117,43 @@ function ajaxGetFromServer(toScript,json,callbackSuccess, callbackError, isAsync
         }
     })
 }
-function createContentListItem(id, title, rating, imgPath){
+function ajaxSendToServer(toScript, json, callbackSuccess, callbackError){
+    $.ajax({
+        url: `${toScript}`,
+        method: "POST",
+        dataType: "json",
+        data: json,
+        success: function(data){
+            if(callbackSuccess)
+                callbackSuccess(data);
+        },
+        error: function(xhr,errType,errMsg){
+            if(callbackError)
+                callbackError(xhr,errType,errMsg);
+        }
+    });
+}
 
-    let image = imgPath.substring(3);
+function createContentListItem(c){
+
+    
+    let fav = "";
+    if(typeof c.user != "undefined"){
+        if(c.user == null)
+            fav = `<i data-id='${c.id}' class="material-icons favoriteBtn">favorite_border</i>`;
+        else
+            fav = `<i data-id='${c.id}' class="material-icons favoriteBtn">favorite</i>`;
+    }
+
+    let image = c.file_path.substring(3);
     let markup = `
     <div class="contentListItem">
         <img src="${image}" alt="Cover">
         <div class="contentOverlay">
-            <i data-id='${id}' class="material-icons">favorite</i>
+            ${fav}
             <div class="contentInfo px-2">
-                <p>${title}</p>
-                <p>${rating} <i class="material-icons ml-1">star</i></p>
+                <p>${c.title}</p>
+                <p>${c.rating} <i class="material-icons ml-1">star</i></p>
             </div>
         </div>
     </div>`;

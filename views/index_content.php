@@ -34,7 +34,16 @@
                     <div class="contentListItem">
                         <img src="<?=substr($m->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons">favorite</i>
+                        <?php 
+                            if($user != null){
+                                if($m->user != null)
+                                    echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                else
+                                    echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                            }
+                                // <i class="material-icons">favorite</i>
+                        ?>
+                        
                             <div class="contentInfo">
                                 <p><?=$m->title?></p>
                                 <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
@@ -67,7 +76,15 @@
                     <div class="contentListItem">
                         <img src="<?=substr($tS->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons" data-id="<?$tS->id?>">favorite</i>
+                            <?php 
+                                if($user != null){
+                                    if($tS->user != null)
+                                        echo "<i data-id='$tS->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                    else
+                                        echo "<i data-id='$tS->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                                }
+                                    // <i class="material-icons">favorite</i>
+                            ?>
                             <div class="contentInfo">
                                 <p><?=$tS->title?></p>
                                 <p><?=$tS->rating?> <i class="material-icons ml-1">star</i></p>
@@ -109,7 +126,15 @@
                     <div class="contentListItem">
                         <img src="<?=substr($m->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons" data-id="<?$m->id?>">favorite</i>
+                            <?php 
+                                if($user != null){
+                                    if($m->user != null)
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                    else
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                                }
+                                    // <i class="material-icons">favorite</i>
+                            ?>
                             <div class="contentInfo">
                                 <p><?=$m->title?></p>
                                 <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
@@ -214,7 +239,15 @@
                     <div class="contentListItem">
                         <img src="<?=substr($m->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons">favorite</i>
+                            <?php 
+                                if($user != null){
+                                    if($m->user != null)
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                    else
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                                }
+                                    // <i class="material-icons">favorite</i>
+                            ?>
                             <div class="contentInfo">
                                 <p><?=$m->title?></p>
                                 <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
@@ -252,7 +285,15 @@
                     <div class="contentListItem">
                         <img src="<?=substr($m->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons">favorite</i>
+                            <?php 
+                                if($user != null){
+                                    if($m->user != null)
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                    else
+                                        echo "<i data-id='$m->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                                }
+                                    // <i class="material-icons">favorite</i>
+                            ?>
                             <div class="contentInfo">
                                 <p><?=$m->title?></p>
                                 <p><?=$m->rating?> <i class="material-icons ml-1">star</i></p>
@@ -289,7 +330,15 @@
                     <div class="contentListItem">
                         <img src="<?=substr($tS->file_path,3)?>" alt="Cover">
                         <div class="contentOverlay">
-                            <i class="material-icons">favorite</i>
+                            <?php 
+                                if($user != null){
+                                    if($tS->user != null)
+                                        echo "<i data-id='$tS->con_id'class='material-icons favoriteBtn'>favorite</i>";
+                                    else
+                                        echo "<i data-id='$tS->con_id'class='material-icons favoriteBtn'>favorite_border</i>";
+                                }
+                                    // <i class="material-icons">favorite</i>
+                            ?>
                             <div class="contentInfo">
                                 <p><?=$tS->title?></p>
                                 <p><?=$tS->rating?> <i class="material-icons ml-1">star</i></p>
@@ -310,16 +359,30 @@
 <?php 
     function getContentByCategory($contentType,$category){
         global $conn;
+        global $user;
 
-        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
+        $bookmarksJoin = "";
+        $bookmarksFilter = "";
+        $bookmarksColumn = "";
+        if($user != null){
+            $bookmarksJoin = "LEFT JOIN (SELECT content_id, user_id FROM user_bookmarks WHERE user_id = :user) AS bookmarks
+                                ON bookmarks.content_id = content.id";
+            $bookmarksColumn = ",bookmarks.user_id AS user";
+        }
+
+        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path $bookmarksColumn FROM content
                         INNER JOIN content_categories AS con_cat ON con_cat.content_id=content.id
-                        INNER JOIN content_images AS con_img ON con_img.content_id = content.id
+                        INNER JOIN content_images AS con_img ON con_img.content_id = content.id 
+                        $bookmarksJoin
                         WHERE content_types_id=:contentType AND isCover=1 AND con_cat.category_id=:category
                         LIMIT 25 OFFSET 0;";
         
         $stm = $conn->prepare($selectQuery);
         $stm->bindParam(":contentType", $contentType);
         $stm->bindParam(":category", $category);
+        if($user != null)
+            $stm->bindParam(":user", $user->id);
+
         $stm->execute();
         
         return $stm->fetchAll();
@@ -339,16 +402,32 @@
         }
     function getContentByResolution($contentType, $resolution){
  
+        global $user;
         global $conn;
-        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
+
+        $bookmarksJoin = "";
+        $bookmarksFilter = "";
+        $bookmarksColumn = "";
+
+        if($user != null){
+            $bookmarksJoin = "LEFT JOIN (SELECT content_id, user_id FROM user_bookmarks WHERE user_id = :user) AS bookmarks
+                                ON bookmarks.content_id = content.id";
+            $bookmarksColumn = ",bookmarks.user_id AS user";
+        }
+
+        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path $bookmarksColumn FROM content
                         INNER JOIN content_resolutions AS con_res ON con_res.content_id = content.id
                         INNER JOIN content_images AS con_img ON con_img.content_id = content.id
+                        $bookmarksJoin
                         WHERE content_types_id=:contentType AND isCover=1 AND con_res.resolution_id=:resolution
                         LIMIT 25 OFFSET 0;";
 
         $stm = $conn->prepare($selectQuery);
         $stm->bindParam(":contentType",$contentType);
         $stm->bindParam(":resolution",$resolution);
+        if($user != null)
+            $stm->bindParam(":user", $user->id);
+        
         $stm->execute();
 
         return $stm->fetchAll();
@@ -364,20 +443,36 @@
         // $contentType = $_GET["contentType"];
 
         global $conn;
+        global $user;
 
         if($byCritics)
             $orderCrit = "metascore";
         else
             $orderCrit = "rating";
         
-        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path FROM content
+        
+        $bookmarksJoin = "";
+        $bookmarksFilter = "";
+        $bookmarksColumn = "";
+        if($user != null){
+            $bookmarksJoin = "LEFT JOIN (SELECT content_id, user_id FROM user_bookmarks WHERE user_id = :user) AS bookmarks
+                                ON bookmarks.content_id = content.id";
+            $bookmarksColumn = ", bookmarks.user_id AS user";
+        }
+
+        $selectQuery = "SELECT content.id AS con_id, title, rating, file_path $bookmarksColumn FROM content
                         INNER JOIN content_images AS con_img ON con_img.content_id = content.id
+                        $bookmarksJoin
                         WHERE content_types_id=:contentType AND isCover=1
                         ORDER BY $orderCrit DESC
                         LIMIT 25 OFFSET 0;";
 
         $stm = $conn->prepare($selectQuery);
         $stm->bindParam(":contentType",$contentType);
+
+        if($user != null)
+            $stm->bindParam(":user", $user->id);
+
         $stm->execute();
 
         return $stm->fetchAll();

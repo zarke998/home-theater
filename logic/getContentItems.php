@@ -1,4 +1,16 @@
 <?php
+
+    if(session_status() != PHP_SESSION_ACTIVE){
+        session_start();
+
+        if(isset($_SESSION["user"]))
+            $user = $_SESSION["user"];
+        else
+            $user = null;
+    }
+    else
+        $user = null;
+    
     $root = $_SERVER["DOCUMENT_ROOT"];
     $root .= "/home-theater";
     require_once "$root/logic/dbConnection.php";
@@ -64,10 +76,21 @@
     else
         $sortCrit = "";
     
-    $getContentQuery = "SELECT content.id, title, year_released, runtime,rating, metascore, file_path FROM content
+
+    $bookmarksJoin = "";
+    $bookmarksFilter = "";
+    $bookmarksColumn = "";
+    if($user != null){
+        $bookmarksJoin = "LEFT JOIN (SELECT content_id, user_id FROM user_bookmarks WHERE user_id = :user) AS bookmarks
+        ON bookmarks.content_id = content.id";
+        $bookmarksColumn = ",bookmarks.user_id AS user";
+    }
+
+    $getContentQuery = "SELECT content.id, title, year_released, runtime,rating, metascore, file_path $bookmarksColumn FROM content
     INNER JOIN content_images AS images ON content.id = images.content_id 
     $categoryJoin
-    WHERE images.isCover = 1 AND content.content_types_id = :c_type $searchQuery $categoryFilter 
+    $bookmarksJoin
+    WHERE images.isCover = 1 AND content.content_types_id = :c_type $searchQuery $categoryFilter
     $sortCrit
     LIMIT :limit OFFSET :offset;";
 
@@ -83,6 +106,8 @@
     if(isset($_GET["category"]) and $_GET["category"] != "0"){
         $contentStm->bindParam(":category",$category);
     }
+    if($user != null)
+        $contentStm->bindParam(":user", $user->id);
     
     $query = $contentStm->queryString;
     $contentStm->execute();
@@ -93,4 +118,13 @@
 
     header("Content-Type: application/json");
     echo json_encode($contentList);
+
+
+//     SELECT content.id, title, year_released, runtime,rating, metascore, file_path, bookmarks.user_id AS user FROM content 
+// INNER JOIN content_images AS images ON content.id = images.content_id 
+// INNER JOIN content_categories AS con_cat ON con_cat.content_id = content.id
+// LEFT JOIN user_bookmarks AS bookmarks ON bookmarks.content_id = content.id
+// WHERE images.isCover = 1 AND content.content_types_id = 1 AND con_cat.category_id = 1 
+// LIMIT 24 OFFSET 0
+
 ?>

@@ -4,6 +4,7 @@ var currentWallpaper = 0;
 $(document).ready(function(){
     $(".contentListScroll").click(scrollList);
     $("#newReleases .contentListScroll").click(loadNextSliderItem);
+    $(".favoriteBtn").click(setUserBookmark);
 
     loadWallpapers();
 });
@@ -58,6 +59,26 @@ function loadSliderItem(pos){
     randomWall = randomWall.substring(3);
     $("#newReleasesBackground").css("background-image", "url('" + randomWall + "')");
 }
+function setUserBookmark(){
+    var contentId = this.dataset.id;
+    var $favoriteBtn = $(this);
+    let setState = $favoriteBtn.text() == "favorite" ? 1 : 0;
+
+    ajaxSendToServer("logic/setUserBookmark.php",{ content_id: contentId, set_state: setState },
+        function(data){
+            alert(data.message);
+
+            if($favoriteBtn.text() == "favorite")
+                $(`.favoriteBtn[data-id="${contentId}"]`).text("favorite_border");
+            else
+                $(`.favoriteBtn[data-id="${contentId}"]`).text("favorite");
+            
+        },
+        function(xhr, errMsg, errType){
+            alert(xhr.responseText);
+        }
+    )
+}
 function ajaxGetFromServer(toScript,json,callbackSuccess, callbackError, isAsync) {
     $.ajax({
         url: `${toScript}`,
@@ -89,4 +110,20 @@ function randomBetween(start, end){
     random+= start;
 
     return random;
+}
+function ajaxSendToServer(toScript, json, callbackSuccess, callbackError){
+    $.ajax({
+        url: `${toScript}`,
+        method: "POST",
+        dataType: "json",
+        data: json,
+        success: function(data){
+            if(callbackSuccess)
+                callbackSuccess(data);
+        },
+        error: function(xhr,errType,errMsg){
+            if(callbackError)
+                callbackError(xhr,errType,errMsg);
+        }
+    });
 }
