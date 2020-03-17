@@ -13,6 +13,8 @@ function onBookmarksReceived(data){
     let $list = $("#bookmarksList");
 
     if(bookmarks.length > 0){
+        $("#bookmarksList h4").hide();
+
         for(let b of bookmarks){
             $list.append(createBookmarkListItem(b.con_id, b.title, b.file_path));
         }

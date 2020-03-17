@@ -1,4 +1,75 @@
+<?php 
+    if(session_status() == PHP_SESSION_NONE)
+        session_start() 
+?>
+
     <div id="footer" class="container-fluid px-5 pt-4">
+        <?php
+
+        $rootPath = $_SERVER["DOCUMENT_ROOT"];
+        $rootPath.= "/home-theater";
+        require_once "$rootPath/logic/dbConnection.php";
+
+        require_once "$rootPath/logic/SurveyLib.php";
+
+        if(isset($_SESSION["user"])){
+            $user = $_SESSION["user"];
+            $surveys = getSurveys($user->id);
+        }
+        else
+            $user = null;
+
+
+
+        if(session_status() == PHP_SESSION_ACTIVE and isset($_SESSION["user"]) and !(isset($isSurveyHidden) and $isSurveyHidden) and count($surveys) > 0) :?>
+        <div class="surveyPanel accordion" id="accordionExample">
+            <?php 
+                foreach($surveys as $s): ?>
+                <div class="card">
+                    <div class="card-header p-1" id="heading<?=$s->info->id?>">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?=$s->info->id?>" aria-expanded="false" aria-controls="collapse<?=$s->info->id?>">
+                            <?=$s->info->name?>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse<?=$s->info->id?>" class="collapse" aria-labelledby="heading<?=$s->info->id?>" data-parent="#accordionExample">
+                        <form action="/home-theater/logic/survey_processor.php" method="POST" onsubmit="return validateSurvey()">    
+                            <div class="card-body">
+                                <?php 
+                                    $questionIndex = 1;
+                                    foreach($s->questions as $q): ?>
+                                    <div class="surveyQuestion mb-4">
+                                    <p>
+                                        <?php 
+                                            $questionName = $q->info->name;
+                                            echo "$questionIndex. $questionName";
+                                            $questionIndex++;
+                                        ?> 
+                                    </p>
+                                    <?php foreach($q->answers as $a): ?>
+                                    <?php $answerId = $a->id;
+                                          $answerName = $a->name; ?>
+                                     <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio<?=$answerId?>" name="customRadio<?=$q->info->id?>" value="<?=$a->id?>" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio<?=$answerId?>"><?=$answerName?></label>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                    <?php endforeach;
+                                        echo "<input id='loginBtn' type='submit' name='surveyBtn' value='Send' class='d-block mx-auto w-25 mt-4 ht-btn sendSurveyAnswersBtn' />";
+                                    ?>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>    
+        <div class="surveyBtn">
+            <i class="material-icons">assignment</i>
+        </div>
+        <?php endif;?>
+
         <div class="row">
             <div class="col-9">
                 <div class="row footerList">
@@ -111,5 +182,71 @@
         <?php endif;
     ?>
 </body>
-
 </html>
+
+<?php 
+    function getSurveys($userId){
+        global $conn;
+
+        $surveys = [];
+
+        $surveysQuery = "SELECT * FROM surveys 
+        WHERE isActive = 1 AND id NOT IN(SELECT s.id FROM surveys AS s
+                                         INNER JOIN survey_questions AS s_q ON s_q.survey_id = s.id
+                                         INNER JOIN survey_question_answers AS s_q_a ON s_q_a.survey_question_id = s_q.survey_id
+                                         INNER JOIN user_survey_answers AS u_s_a ON u_s_a.survey_question_answer_id = s_q_a.id
+                                         WHERE u_s_a.user_id = :user)";
+        $surveyStm = $conn->prepare($surveysQuery);
+        $surveyStm->bindParam(":user",$userId);
+        $surveyStm->execute();
+
+        while($s = $surveyStm->fetch()){
+            $survey = new Survey();
+            $survey->info = $s;
+
+            $questionsQuery = "SELECT * FROM survey_questions WHERE survey_id=:id";
+            $questionsStm = $conn->prepare($questionsQuery);
+            $questionsStm->bindParam(":id", $s->id);
+
+            $questionsStm->execute();
+            
+            while($q = $questionsStm->fetch()){
+                $surveyQuestion = new SurveyQuestion();
+                $surveyQuestion->info = $q;
+
+                $answersQuery = "SELECT * FROM survey_question_answers WHERE survey_question_id=:id";
+                $answersStm = $conn->prepare($answersQuery);
+                $answersStm->bindParam(":id",$q->id);
+
+                $answersStm->execute();
+
+                while($a = $answersStm->fetch()){
+                    $surveyQuestion->answers[] = $a;
+                }
+
+                $survey->questions[] = $surveyQuestion;
+            }
+
+            $surveys[] = $survey;
+        }
+
+        return $surveys;
+    }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

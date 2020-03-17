@@ -13,7 +13,7 @@ function sendBusinessData(){
     let $message = $("#businessMessage");
 
 
-    let emailReg = /^[a-z]+[a-z\d]{2,}@[a-z]{2,}(\.[a-z]{2,})*$/;
+    let emailReg = /^[a-z]+[a-z\d]{2,}(\.[a-z\d]+)*@[a-z]{2,}(\.[a-z]{2,})+$/;
 
     if(!emailReg.test($email.val())){
         $email.addClass("is-invalid");

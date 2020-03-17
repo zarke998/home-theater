@@ -8,7 +8,7 @@
     $email = $_POST["email"];
     $message = $_POST["message"];
 
-    if(!preg_match("/^[a-z]+[a-z\d]{2,}@[a-z]{2,}(\.[a-z]{2,})*$/", $email)){
+    if(!preg_match("/^[a-z]+[a-z\d]{2,}(\.[a-z\d]+)*@[a-z]{2,}(\.[a-z]{2,})+$/", $email)){
         http_response_code(422);
         die("Invalid email format");
     }

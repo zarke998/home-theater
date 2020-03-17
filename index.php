@@ -11,5 +11,10 @@
     require_once "views/index_content.php";
 
     $scripts = ["main.js","index.js"];
+
+    if(isset($_SESSION["surveyMsg"])){
+        $alertMsg = $_SESSION["surveyMsg"];
+        unset($_SESSION["surveyMsg"]);
+    }
     require_once "views/footer.php";
 ?>

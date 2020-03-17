@@ -9,6 +9,7 @@
 
         $movieCategories = getAvailableContentCategories(1);
         $tvShowCategories = getAvailableContentCategories(2);
+
     }
     else
         $user = null;
@@ -265,14 +266,14 @@
 
     <!-- authorized -->
     <?php 
-        if($user != null){
+        if($user != null and count($movieCategories) > 0){
             $randCat = rand(0, count($movieCategories) - 1);
 
             $catId = $movieCategories[$randCat]->cat_id;
             $catName = $movieCategories[$randCat]->cat_name;
         }
         
-        if($user != null) : ?>
+        if($user != null and count($movieCategories) > 0) : ?>
     <div class="contentListContainer mb-5 px-1 order-1">
         <h2 class="mb-4">Best Movies - <?=$catName?></h2>
         <div class="contentListWrapper">
@@ -310,13 +311,13 @@
     <?php endif; ?>
 
     <?php 
-        if($user != null) {
+        if($user != null and count($tvShowCategories) > 0) {
             $randCat = rand(0, count($tvShowCategories) - 1);
 
             $catId = $tvShowCategories[$randCat]->cat_id;
             $catName = $tvShowCategories[$randCat]->cat_name;
         }
-        if($user != null):
+        if($user != null and count($tvShowCategories) > 0):
          ?>
     <div class="contentListContainer mb-5 px-1 order-2">
         <h2 class="mb-4">Best TV Shows - <?=$catName?></h2>

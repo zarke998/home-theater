@@ -179,6 +179,55 @@ a{
     background-color: $footerBlack;
     border-top: 1px solid $footerBorderTop;
 }
+.surveyPanel{
+    position: fixed;
+    z-index: 1;
+    bottom: 100px;
+    
+    right: 30px;
+    width: 500px;
+    
+    border: 1px solid gray;
+    border-radius: 5px;
+
+    .card{
+        max-height: 350px;
+    }
+    .card-header{
+        background-color: lighten($primaryBlack, 6%);
+        button{
+            color: white;
+        }
+    }
+    .card-body{
+        max-height: 280px;
+        overflow: auto;
+        background-color: $primaryBlack;
+    }
+}
+.surveyBtn{
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    right: 30px;
+    
+    i{
+        user-select: none;
+        
+        background-color: black;
+
+        padding: 10px;
+        
+        border: 1px solid white;
+        border-radius: 1000px;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+
+    }
+}
 
 #copyright{
     font-size: 16px;
@@ -646,8 +695,10 @@ a{
         margin-bottom: 15px;
         padding-bottom: 5px;
         border-bottom: 1px solid gray;
+        
         span{
-            
+            text-overflow: ellipsis;
+            overflow-x: hidden;
             font-size: 28px;
         }
     }
@@ -920,12 +971,15 @@ a{
     }
 }
 #bookmarksListContainer{
-
+    
 }
 #bookmarksList{
     overflow-y: auto;
     overflow-x: visible;
     height: 500px;
+    h4{
+        font-size: 22px;
+    }
 }
 .bookmarkListItem{
     >div:nth-child(2){

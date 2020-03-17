@@ -86,7 +86,6 @@ function setUserBookmark(){
 
     ajaxSendToServer("logic/setUserBookmark.php",{ content_id: contentId, set_state: setState },
         function(data){
-            alert(data.message);
 
             if($favoriteBtn.text() == "favorite")
                 $(`.favoriteBtn[data-id="${contentId}"]`).text("favorite_border");

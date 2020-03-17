@@ -183,6 +183,56 @@ a:hover {
   border-top: 1px solid #2c2c2c;
 }
 
+.surveyPanel {
+  position: fixed;
+  z-index: 1;
+  bottom: 100px;
+  right: 30px;
+  width: 500px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.surveyPanel .card {
+  max-height: 350px;
+}
+
+.surveyPanel .card-header {
+  background-color: #171717;
+}
+
+.surveyPanel .card-header button {
+  color: white;
+}
+
+.surveyPanel .card-body {
+  max-height: 280px;
+  overflow: auto;
+  background-color: #080808;
+}
+
+.surveyBtn {
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  right: 30px;
+}
+
+.surveyBtn i {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: black;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 1000px;
+}
+
+.surveyBtn i:hover {
+  cursor: pointer;
+}
+
 #copyright {
   font-size: 16px;
 }
@@ -714,6 +764,8 @@ a:hover {
 }
 
 .accountPanel .accountInfo span {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
   font-size: 28px;
 }
 
@@ -997,6 +1049,10 @@ a:hover {
   overflow-y: auto;
   overflow-x: visible;
   height: 500px;
+}
+
+#bookmarksList h4 {
+  font-size: 22px;
 }
 
 .bookmarkListItem > div:nth-child(2) {

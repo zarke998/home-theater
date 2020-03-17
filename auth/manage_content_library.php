@@ -5,7 +5,7 @@
         header("Location: ../403.php");
         exit;
     }
-
+    
     $pageTitle = "HomeTheater - Manage content library";
     require_once "../views/head.php";
 
@@ -23,5 +23,6 @@
         $alertMsg = $_SESSION["addContentSuccess"];
         unset($_SESSION["addContentSuccess"]);
     }
+    $isSurveyHidden = true;
     require_once "../views/footer.php";
 ?>

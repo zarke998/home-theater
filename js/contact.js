@@ -16,7 +16,7 @@ function sendContactData(){
     let $message = $("#contactMessage");
     $message.removeClass("is-invalid");
 
-    let emailReg = /^[a-z]+[a-z\d]{2,}@[a-z]{2,}(\.[a-z]{2,})*$/;
+    let emailReg = /^[a-z]+[a-z\d]{2,}(\.[a-z\d]+)*@[a-z]{2,}(\.[a-z]{2,})+$/;
     let subjectReg = /^[A-z\d-]+(\s([A-z\d-]+))*$/;
 
     if(!emailReg.test($email.val())){
