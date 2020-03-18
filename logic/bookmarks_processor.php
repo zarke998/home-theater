@@ -1,13 +1,13 @@
 <?php 
     session_start();
+    
 
     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-    $rootPath.= "/home-theater";
     require_once "$rootPath/logic/dbConnection.php";
 
     if(!isset($_SESSION["user"]) and isset($_GET["offset"])){
         http_response_code(403);
-        header("Location: ../403.php");
+        header("Location: $rootPath/403.php");
         exit;
     }
 

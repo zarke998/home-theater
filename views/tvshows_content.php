@@ -14,7 +14,6 @@
             <select id="contentCategoriesSelect" class="ml-3">
                 <?php
                     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                    $rootPath.= "/home-theater";
                     require_once "$rootPath/logic/getAllCategories.php";
 
                     var_dump($categories);

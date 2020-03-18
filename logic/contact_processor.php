@@ -1,5 +1,6 @@
 <?php   
 
+
     if(!(isset($_POST["contactBtn"]) and isset($_POST["email"]) and isset($_POST["subject"]) and isset($_POST["message"]))){
         http_response_code(400);
         die("Incomplete input data.");

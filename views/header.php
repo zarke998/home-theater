@@ -1,10 +1,10 @@
 <?php 
+    
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
-    $rootPath = $_SERVER["DOCUMENT_ROOT"];
-    $rootPath.= "/home-theater";
+    $rootPath = $_SERVER["DOCUMENT_ROOT"];    
     require_once "$rootPath/logic/menuFetcher.php";
 
     if(isset($_SESSION["user"]))
@@ -51,7 +51,7 @@
                             
                         ?>
                         <li class="border-top mt-2 pt-2">
-                            <form action="/home-theater/logout.php" method="GET">
+                            <form action="/logout.php" method="GET">
                                 <button type="submit" name="logoutBtn" value="on" id="logoutBtn" href="#">Logout</button>
                             </form>
                         </li>
@@ -64,8 +64,8 @@
                         <i class="material-icons d-block">account_circle</i><span class="d-block ml-2 mb-1"> Account </span>
                     </div>
                     <ul class="accountLinks text-center mb-0">
-                        <li><a href="http://localhost/home-theater/login.php">Login</a></li>
-                        <li><a href="http://localhost/home-theater/register.php">Register</a></li>
+                        <li><a href="login.php">Login</a></li>
+                        <li><a href="register.php">Register</a></li>
                     </ul>
                 </div>
 
@@ -83,7 +83,6 @@
                 </li> -->
                 <?php
                     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                    $rootPath.= "/home-theater";
                     require_once "$rootPath/logic/menuFetcher.php";
 
                     $items = getMenuItems("nav_menu");
@@ -95,7 +94,7 @@
                     
             
                     echo '<li class="nav-item d-none d-md-inline websiteTitle">
-                            <a class="nav-link" href="/home-theater/index.php">HomeTheater</a>
+                            <a class="nav-link" href="/index.php">HomeTheater</a>
                         </li>';
                     
                     for($i = count($items)/2; $i < count($items); $i++): ?>

@@ -6,6 +6,6 @@
         session_destroy();
     }
 
-    header("Location: http://localhost/home-theater/index.php");
+    header("Location: index.php");
     exit;
 ?>

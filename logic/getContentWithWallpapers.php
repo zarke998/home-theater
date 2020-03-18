@@ -1,6 +1,7 @@
 <?php 
+
+    
     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-    $rootPath.= "/home-theater";
     require "$rootPath/logic/dbConnection.php";
 
     $selectQuery = "SELECT content.id AS con_id,title,description, file_path FROM content

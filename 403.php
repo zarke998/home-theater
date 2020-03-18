@@ -1,5 +1,4 @@
 <?php
-
     $pageTitle = "HomeTheater - 403";
     require_once "views/head.php";
 

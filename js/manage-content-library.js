@@ -40,7 +40,7 @@ function showNewContentDialog(){
         $("#categoriesDropdown").prev().text("(none)");
         $("#resolutionsDropdown").prev().text("(none)");
     
-        $("#newCoverImage>img").attr("src","/home-theater/images/no-image.jpg");
+        $("#newCoverImage>img").attr("src","/images/no-image.jpg");
         $("#thumbnailImageBtn").parent().next().removeClass("d-block");
         $("#wallpapersContainer").removeClass("d-block");
 
@@ -417,7 +417,7 @@ function loadContentOfType(){
 function loadContentItems(contentTypeId, listOffset, searchString){
     let searchCrit = searchString ? searchString : "";
     searchCrit = searchCrit.trim();
-    ajaxGetFromServer("../logic/getContentItems.php", {offset: listOffset, contentType: contentTypeId, search: searchCrit}, onContentReceived, onContentError, false);
+    ajaxGetFromServer("/logic/getContentItems.php", {offset: listOffset, contentType: contentTypeId, search: searchCrit}, onContentReceived, onContentError, false);
 }
 function createContentListItem(id, title, yearReleased, runtime, metascore, imgPath){
     let listItem = document.createElement("div");

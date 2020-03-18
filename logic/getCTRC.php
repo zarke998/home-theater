@@ -1,4 +1,7 @@
 <?php 
+
+    
+
     require_once "getAllCategories.php";
     require_once "getAllContentTypes.php";
     require_once "getAllResolutions.php";

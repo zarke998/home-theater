@@ -1,12 +1,6 @@
 <?php 
     session_start();
-
-    $referer = getenv("HTTP_REFERER");
-    if(substr($referer,0,61) != "http://localhost/home-theater/auth/manage_content_library.php"){
-        header("Location: ../403.php");
-        exit;
-    }
-
+    
     require_once "dbConnection.php";
 
     if(isset($_POST["addBtn"])){
@@ -144,7 +138,6 @@
         // ADD WALLPAPERS
         if(isset($_FILES["wallpapers"])){
             $wallpapers = $_FILES["wallpapers"];
-            var_dump($wallpapers);
             for($i = 0; $i < count($wallpapers["name"]);$i++){
                 $wName = $wallpapers["name"][$i];
                 if($wName == "")

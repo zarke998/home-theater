@@ -1,7 +1,7 @@
 <?php 
-    $rootPath = $_SERVER["DOCUMENT_ROOT"];
-    $rootPath.= "/home-theater";
 
+
+    $rootPath = $_SERVER["DOCUMENT_ROOT"];
     require_once "$rootPath/logic/dbConnection.php";
 
     if(!(isset($_POST["id"]) 

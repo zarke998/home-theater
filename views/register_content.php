@@ -18,7 +18,6 @@
                     <div id="subscriptionRadios" class="d-flex justify-content-between">
                     <?php
                         $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                        $rootPath.= "/home-theater";
                         require_once "$rootPath/logic/dbConnection.php";
 
                         $subscriptionQuery = "SELECT id, name, price FROM subscription_types;";

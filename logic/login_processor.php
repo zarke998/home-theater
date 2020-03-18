@@ -1,17 +1,7 @@
 <?php 
-    session_start();
+    if(!session_id())
+        session_start();
 
-    $referer = getenv("HTTP_REFERER");
-    if(substr($referer,0,39) != "http://localhost/home-theater/login.php"){
-        header("Location: ../403.php");
-        exit;
-    }
-    
-    else if(!(isset($_POST["loginBtn"]) and isset($_POST["email"]) and isset($_POST["password"]))){
-        http_response_code(400);
-        die("Incomplete input data.");
-    }
-    
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -47,5 +37,5 @@
     $_SESSION["user"] = $user;
 
     header("Conent-Type: application/json");
-    echo json_encode(["redirect" => "http://localhost/home-theater/index.php"]);
+    echo json_encode(["redirect" => "index.php"]);
 ?>

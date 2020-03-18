@@ -13,5 +13,5 @@
             </button>
         </div>
     </div>
-    <img id="bookmarksDecoration" src="/home-theater/images/stormtrooper-alpha.png" alt="Decoration image"/>
+    <img id="bookmarksDecoration" src="/images/stormtrooper-alpha.png" alt="Decoration image"/>
 </div>

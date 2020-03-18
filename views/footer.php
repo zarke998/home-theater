@@ -7,7 +7,6 @@
         <?php
 
         $rootPath = $_SERVER["DOCUMENT_ROOT"];
-        $rootPath.= "/home-theater";
         require_once "$rootPath/logic/dbConnection.php";
 
         require_once "$rootPath/logic/SurveyLib.php";
@@ -34,7 +33,7 @@
                         </h5>
                     </div>
                     <div id="collapse<?=$s->info->id?>" class="collapse" aria-labelledby="heading<?=$s->info->id?>" data-parent="#accordionExample">
-                        <form action="/home-theater/logic/survey_processor.php" method="POST" onsubmit="return validateSurvey()">    
+                        <form action="/logic/survey_processor.php" method="POST" onsubmit="return validateSurvey()">    
                             <div class="card-body">
                                 <?php 
                                     $questionIndex = 1;
@@ -78,7 +77,6 @@
                         <ul>
                         <?php 
                             $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                            $rootPath.= "/home-theater";
                             require_once "$rootPath/logic/menuFetcher.php";
 
                             $items = getMenuItems("nav_menu");
@@ -96,7 +94,6 @@
                         <ul>
                         <?php 
                             $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                            $rootPath.= "/home-theater";
                             require_once "$rootPath/logic/menuFetcher.php";
 
                             $items = getMenuItems("socials_menu");
@@ -114,7 +111,6 @@
                         <ul>
                         <?php 
                             $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                            $rootPath.= "/home-theater";
                             require_once "$rootPath/logic/menuFetcher.php";
 
                             $items = getMenuItems("legal_menu");
@@ -131,7 +127,6 @@
                         <ul>
                         <?php 
                             $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                            $rootPath.= "/home-theater";
                             require_once "$rootPath/logic/menuFetcher.php";
 
                             $items = getMenuItems("account_footer_menu");
@@ -162,7 +157,7 @@
         <p id="copyright" class="text-center mb-2">Copyright &copy; | HomeTheater <?php echo date("Y")?>. All rights reserved.</p>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/home-theater/js/jquery.nicescroll.min.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
@@ -170,7 +165,7 @@
         if(isset($scripts))
         {
             foreach($scripts as $s): ?>
-                <script src="/home-theater/js/<?=$s?>"></script>
+                <script src="/js/<?=$s?>"></script>
             <?php endforeach;
         }
         if(isset($alertMsg)): ?>

@@ -11,7 +11,6 @@
             <select id="contentTypesSelect" class="ml-3">
                 <?php
                     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-                    $rootPath.= "/home-theater";
                     require_once "$rootPath/logic/getAllContentTypes.php";
 
                     foreach($content_types as $c): ?>
@@ -27,22 +26,6 @@
     </div>
 
     <div id="manageContentList" class="row mt-2 mb-3">
-        <!-- <div class="col-3 manageContentItem mb-3">
-            <div>
-                <img src="/home-theater/images/no-image.jpg" alt="Cover">
-            </div>
-            <div class="px-0 ml-2">
-                <div>
-                    <div class="d-flex align-items-center mb-2">
-                        <h3 class="d-inline mb-0">Deadpool</h3> <i class="d-inline ml-2 material-icons deleteBtn">delete</i>
-                    </div>
-                    <p>Release year: 2019</p>
-                    <p>Runtime: 120min</p>
-                    <p>Categories: Actio, Drama...</p>
-                </div>  
-                <button class="ht-btn" value="1" type="button">Edit</button>
-            </div>
-        </div> -->
     </div>
         <button id="loadMoreContent" type="button" class="ht-btn mx-auto my-3"><i class="material-icons">arrow_drop_down</i></button>
 
@@ -57,9 +40,9 @@
             <form enctype="multipart/form-data" class="w-100" action="../logic/addContent.php" method="POST" onsubmit="return addNewContent()">
                 <div class="row mt-4">
                     <div class="col-3">
-                        <div >
+                        <div>
                             <div id="newCoverImage" class="mb-2">
-                                <img src="/home-theater/images/no-image.jpg" alt="No image" class="w-100">
+                                <img src="/images/no-image.jpg" alt="No image" class="w-100">
                                 <input id="chooseCoverImage" type="file" name="coverImage" />
                                 <p class="text-center">Format: 800x600</p>
                             </div>

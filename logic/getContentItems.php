@@ -1,5 +1,7 @@
 <?php
 
+
+
     if(session_status() != PHP_SESSION_ACTIVE){
         session_start();
 
@@ -11,8 +13,8 @@
     else
         $user = null;
     
+    
     $root = $_SERVER["DOCUMENT_ROOT"];
-    $root .= "/home-theater";
     require_once "$root/logic/dbConnection.php";
 
     if(!(isset($_GET["offset"]) and isset($_GET["contentType"])) and isset($_GET["search"])){

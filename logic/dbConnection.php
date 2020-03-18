@@ -1,8 +1,19 @@
 <?php
+
+    
+    $debug = true;
+
     $host = "localhost";
-    $dbName = "hometheater";
-    $dbUser = "root";
-    $dbPassword = "";
+    if($debug){
+        $dbName = "hometheater";
+        $dbUser = "root";
+        $dbPassword = "";
+    }
+    else{
+        $dbName = "id12855867_hometheater";
+        $dbUser = "id12855867_zarke998";
+        $dbPassword = "qawsedrft117";
+    }
 
     try{
         $conn = new PDO("mysql:host=$host;dbname=$dbName",$dbUser,$dbPassword);

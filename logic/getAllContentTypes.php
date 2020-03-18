@@ -1,4 +1,6 @@
 <?php 
+
+    
     require_once "dbConnection.php";
 
     $content_types = [];

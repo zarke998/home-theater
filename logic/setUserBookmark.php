@@ -2,11 +2,11 @@
 
     session_start();
 
+    
     if(!isset($_SESSION["user"]))
         die("User not logged in");
 
     $rootPath = $_SERVER["DOCUMENT_ROOT"];
-    $rootPath.= "/home-theater";
     require "$rootPath/logic/dbConnection.php";
 
 

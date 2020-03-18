@@ -1,12 +1,9 @@
 <?php 
     session_start();
 
-    $referer = getenv("HTTP_REFERER");
-    if(substr($referer,0,42) != "http://localhost/home-theater/register.php"){
-        header("Location: ../403.php");
-        exit;
-    }
-    else if(!(isset($_POST["registerBtn"]) and isset($_POST["email"]) and isset($_POST["password"]) and isset($_POST["subscription"]))){
+
+
+    if(!(isset($_POST["registerBtn"]) and isset($_POST["email"]) and isset($_POST["password"]) and isset($_POST["subscription"]))){
         http_response_code(400);
         die("Incomplete input data.");
     }
