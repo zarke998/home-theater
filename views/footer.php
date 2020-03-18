@@ -3,7 +3,7 @@
         session_start() 
 ?>
 
-    <div id="footer" class="container-fluid px-5 pt-4">
+    <div id="footer" class="container-fluid px-4 px-md-5 pt-4">
         <?php
 
         $rootPath = $_SERVER["DOCUMENT_ROOT"];
@@ -70,9 +70,9 @@
         <?php endif;?>
 
         <div class="row">
-            <div class="col-9">
-                <div class="row footerList">
-                    <div class="col-3">
+            <div class="col-12 col-md-7 col-lg-9">
+                <div class="row footerList text-center text-md-left">
+                    <div class="col-6 col-lg-3">
                         <h3>General</h3>
                         <ul>
                         <?php 
@@ -89,7 +89,7 @@
                         ?>
                         </ul>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-lg-3">
                         <h3>Socials</h3>
                         <ul>
                         <?php 
@@ -106,7 +106,7 @@
                         ?>
                         </ul>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-lg-3">
                         <h3>Legal</h3>
                         <ul>
                         <?php 
@@ -122,7 +122,7 @@
                             <?php endfor;
                         ?>
                         </ul>
-                    </div><div class="col-3">
+                    </div><div class="col-6 col-lg-3">
                         <h3>Account</h3>
                         <ul>
                         <?php 
@@ -141,8 +141,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 newsletterContainer">
-                <h3>Subscribe to our newsletter</h3>
+            <div class="col-12 col-md-5 col-lg-3 px-2 px-sm-5 px-md-1 newsletterContainer mb-2">
+                <h3 class="text-center">Subscribe to our newsletter</h3>
                 <form class="mt-4 pt-2">
                     <div class="input-group input-group-sm border-0 newsletterForm">
                         <input type="email" class="form-control border-0 rounded-0" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">

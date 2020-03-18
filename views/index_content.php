@@ -24,7 +24,7 @@
 
     ?>
     <div class="contentListContainer mb-5 px-1 order-<?php echo $order ?>">
-        <h2 class="mb-4">Most popular Movies</h2>
+        <h2 class="mb-4 text-center text-sm-left">Most popular Movies</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
@@ -65,7 +65,7 @@
             $order = "7";
     ?>
     <div class="contentListContainer mb-4 px-1 order-<?php echo $order ?>">
-        <h2 class="mb-4">Most popular TV Shows</h2>
+        <h2 class="mb-4 text-center text-sm-left">Most popular TV Shows</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
@@ -101,22 +101,22 @@
 
     <?php
         if($user == null): ?>
-    <div id="freeTrialContainer" class="row px-5 py-5 order-3">
-        <div class="col-6">
+    <div id="freeTrialContainer" class="row px-3 px-sm-5 py-5 order-3">
+        <div class="col-md-7 col-lg-6 px-0">
             <h2 class="text-center mb-5">Start your Free Trial</h2>
             <ul>
                 <li class="mb-2"><i class="material-icons mr-3 ">play_circle_filled</i><span>7 day Free Trial</span></li>
                 <li class="mb-2"><i class="material-icons mr-3 ">play_circle_filled</i><span>Gain access to all features</span></li>
                 <li class="mb-2"><i class="material-icons mr-3 ">play_circle_filled</i><span>After that you can subscribe for only 4.99$/month</span></li>
             </ul>
-            <button type="button" class="ht-btn d-block mx-auto py-0 w-25" disabled>Free trial</button>
+            <button type="button" class="ht-btn d-block mx-auto py-0" disabled>Free trial</button>
         </div>
         <div class="col-6"></div>
     </div>
     <?php endif; ?>
 
     <div class="contentListContainer mb-5 mt-4 px-1 order-4">
-        <h2 class="mb-4">4K Movies</h2>
+        <h2 class="mb-4 text-center text-sm-left">4K Movies</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
@@ -161,9 +161,9 @@
             <h2 class="text-center mb-5">New releases</h2>
         </div>
         <div class="col-1"></div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <div id="newReleases" class="row">
-                <div class="col-6 px-0">
+                <div class="col-10 offset-1 col-md-6 offset-md-0 px-0">
                     <div class="row d-flex align-items-center justify-content-between">
                         <div data-dir="-1" class="col-1 contentListScroll contentListScrollLeft px-0">
                             <i class="material-icons">keyboard_arrow_left</i>
@@ -176,9 +176,9 @@
                         </div>
                     </div>
                 </div>
-                <div id="sliderItemInfo" class="col-6">
-                    <h4 class="mb-4">Deadpool</h4>
-                    <p>This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. </p>
+                <div id="sliderItemInfo" class="col-12 col-md-6">
+                    <h4 class="mt-3 mt-md-0 mb-4 text-center text-md-left">Deadpool</h4>
+                    <p class="text-center text-md-left">This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. This is a description.. </p>
                     <button type="button" class="ht-btn d-block mx-auto" disabled> Watch now</button>
                 </div>
             </div>
@@ -203,13 +203,13 @@
         else
             $order = "5";
     ?>
-    <div id="mobileAppContainer" class="row mb-5 px-5 py-5 order-<?=$order?>">
+    <div id="mobileAppContainer" class="row mb-5 px-3 px-md-5 py-5 order-<?=$order?>">
         <img id="mobileDecoration" src="images/phone-frame.png" alt="Decoration" ></img>
-        <div id="mobileInfo"class="col-8">
+        <div id="mobileInfo"class="col-12 col-md-8">
             <h2 class="mb-4">Download our mobile app!</h2>
             <p>Take our content library anywhere with you, by scaning qr code with your phone or going to the play store directly via button below.</p>
             <div class="row">
-                <div id="mobileInfoDetails" class="col-6">
+                <div id="mobileInfoDetails" class="col-12 col-md-6">
                     <p>Benefits of installing mobile app:</p>
                     <ul>
                         <li class="mb-2"><i class="material-icons mr-3 ">play_circle_filled</i><span>7 day Free Trial</span></li>
@@ -229,7 +229,7 @@
         }
         if($user == null): ?>
     <div class="contentListContainer mb-5 px-1 order-<?=$order?>">
-        <h2 class="mb-4">Best rated Movies by critics</h2>
+        <h2 class="mb-4 text-center text-sm-left">Best rated Movies by critics</h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
             <?php 
@@ -274,7 +274,7 @@
         
         if($user != null and count($movieCategories) > 0) : ?>
     <div class="contentListContainer mb-5 px-1 order-1">
-        <h2 class="mb-4">Best Movies - <?=$catName?></h2>
+        <h2 class="mb-4 text-center text-sm-left">Best Movies - <?=$catName?></h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
                 <?php
@@ -319,7 +319,7 @@
         if($user != null and count($tvShowCategories) > 0):
          ?>
     <div class="contentListContainer mb-5 px-1 order-2">
-        <h2 class="mb-4">Best TV Shows - <?=$catName?></h2>
+        <h2 class="mb-4 text-center text-sm-left">Best TV Shows - <?=$catName?></h2>
         <div class="contentListWrapper">
             <div class="contentList d-flex">
                 <?php

@@ -1,6 +1,6 @@
-<div id="registerContainer" class="container-fluid ht-px-7 py-5 position-relative">
+<div id="registerContainer" class="container-fluid py-5 position-relative">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-lg-5 px-3 px-sm-4 px-md-0 ml-0 ml-md-5">
             <h2>Register</h2>
             <form class="mt-4 pt-2">
                 <div class="form-group border-0">
@@ -27,7 +27,7 @@
                         $subscriptions = $subStm->fetchAll();
 
                         for($i = 0; $i < count($subscriptions); $i++): ?>
-                            <div class="custom-control custom-radio">
+                            <div class="custom-control custom-radio text-center mb-2">
                                 <input type="radio" id="customRadio<?=$i?>" name="subscription" value="<?=$subscriptions[$i]->id?>" class="custom-control-input">
                                 <label class="custom-control-label" for="customRadio<?=$i?>">
                                     <?php 

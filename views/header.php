@@ -19,7 +19,7 @@
         <button class="navbar-toggler navigationBtn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="material-icons">menu</span>
         </button>
-        <a class="navbar-brand d-md-none mx-auto websiteTitle" href="#">HomeTheater</a>
+        <a class="navbar-brand d-md-none mx-auto websiteTitle" href="/index.php">HomeTheater</a>
         <div class="account">
             <div>
                 <i id="accountBtn" class="material-icons medium">account_circle</i>

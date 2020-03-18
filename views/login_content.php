@@ -1,6 +1,6 @@
-<div id="loginContainer" class="container-fluid ht-px-7 py-5 position-relative">
-    <div class="row">
-        <div class="col-md-6">
+<div id="loginContainer" class="container-fluid py-5 position-relative">
+    <div class="row mx-0">
+        <div class="col-md-7 col-lg-6 px-3 px-sm-5 ml-md-0 ml-md-5">
             <h2>Login</h2>
             <form class="mt-4 pt-2">
                 <div class="form-group border-0">
@@ -14,7 +14,7 @@
                     <input type="checkbox" class="custom-control-input" id="loginRememberMe">
                     <label class="custom-control-label" for="loginRememberMe">Remember me</label>
                 </div> -->
-                <button id="loginBtn" type="button" class="d-block mx-auto w-25 mt-4 ht-btn">Login</button>
+                <button id="loginBtn" type="button" class="d-block mx-auto mt-4 ht-btn">Login</button>
             </form>
         </div>
     </div>

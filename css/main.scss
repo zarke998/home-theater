@@ -84,6 +84,7 @@ $dialogBorderColor: rgb(128, 128, 128);
 html{
     font-size: $fontSizeDefault !important;
     font-family: $fontSizeDefault !important;
+    overflow-x: hidden;
 }
 
 body{
@@ -125,8 +126,8 @@ a{
     height: 600px;
 }
 .navigationContainer{
-    background-color: rgba(0,0,0,0.3) !important;
-    // border-bottom: 1px solid rgb(56, 56, 56);
+    background-color: rgba(0,0,0,0.5) !important;
+    border-bottom: 1px solid rgb(99, 99, 99);
 }
 
 .navigationMenu{
@@ -164,7 +165,7 @@ a{
 
 #loginContainer{
     height: 600px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 #loginDecoration{
     position: absolute;
@@ -173,6 +174,9 @@ a{
     height: 700px;
     transform: scaleX(-1);
     z-index: -1;
+}
+#loginBtn{
+    width: 150px;
 }
 
 #footer{
@@ -443,7 +447,7 @@ a{
 }
 #registerContainer{
     min-height: 600px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 //////////////////////////////////////////////////////////////////////////// INDEX
 .contentListContainer{
@@ -597,7 +601,7 @@ a{
 #freeTrialContainer{
     background-size: cover;
     background-image: url("../images/free-trial.jpg");
-    height: 550px;
+    min-height: 550px;
     ul{
         li{
             font-size: 22px;
@@ -610,6 +614,7 @@ a{
     }
     button{
         background-color: rgba(0,0,0,0.8);
+        width: 175px !important;
         &:hover{
             background-color: black;
         }
@@ -618,7 +623,7 @@ a{
 #mobileAppContainer{
     background-size: cover;
     background-image: url("../images/dracula.jpg");
-    height: 650px;
+    min-height: 650px;
     position: relative;
 
     #mobileInfo{
@@ -642,8 +647,9 @@ a{
             i{
                 font-size: 26px;
             }
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: rgba(0, 0, 0, 0.13);
+            text-shadow: 1px 1px black;
+            // -webkit-text-stroke-width: 1px;
+            // -webkit-text-stroke-color: rgb(0, 0, 0);
         }
     }
     button{
@@ -969,17 +975,20 @@ a{
     h2{
         font-size: 28px;
     }
+    overflow-x: hidden;
+
 }
 #bookmarksListContainer{
-    
+    height: 500px;
 }
 #bookmarksList{
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: visible;
-    height: 500px;
+    max-height: 500px;
     h4{
         font-size: 22px;
-    }
+    }    
+    // border: 1px solid rgb(58, 58, 58);
 }
 .bookmarkListItem{
     >div:nth-child(2){
@@ -1002,6 +1011,151 @@ a{
     z-index: -1;
 
     height: 90%;
+}
+///////////////////////////////////////////////////////////////////////////////// MEDIA QUERIES
+@media only screen and (max-width: 992px){
+    #contentListFull{
+        >div{
+            width: 20%;
+        }
+    }
+    #contactSocials{
+        a{
+            width: 10%;
+        }
+    }
+    #newContentPanel{
+        &Dialog{
+            width: 600px;
+        }
+    }
+}
+@media only screen and (max-width: 820px){
+    #bookmarksDecoration{
+        right: -100px;
+        height: 90%;
+        filter: brightness(70%);
+    }
+}
+@media only screen and (max-width: 768px){
+    #contactSocials{
+        a{
+            width: 12%;
+        }
+    }
+    #loginDecoration{
+        right: -100px;
+    }
+    #registerDecoration{
+        right: 0%;
+    }
+    #promoContainer{
+        justify-content: center !important;
+        flex-wrap: wrap;
+        p{
+            text-align: center;
+            margin-bottom: 10px !important;
+        }
+        button{
+            margin-bottom: 5px;
+        }
+    }
+}
+@media only screen and (max-width: 620px){
+    #newContentPanel{
+        &Dialog{
+            width: 450px;
+        }
+    }
+}
+@media only screen and (max-width: 575px){
+    #contentListFull{
+        >div{
+            width: 33.3%;
+        }
+    }
+    .surveyPanel{
+        width: 300px;
+    }
+    input[name=surveyBtn]{
+        width: 200px !important;
+    }
+    #contactSocials{
+        a{
+            width: 8%;
+        }
+    }
+    #profileImageContainer{
+        padding: 0px 60px;
+    }
+    #bookmarksDecoration{
+        right: -200px;
+    
+        height: 90%;
+
+        filter: brightness(40%);
+
+    }
+}
+@media only screen and (max-width: 575px){
+    #newContentPanel{
+        &Dialog{
+            width: 350px;
+        }
+    }
+}
+@media only screen and (max-width: 480px){
+    #registerDecoration{
+        right: -15%;
+    }
+    #subscriptionRadios{
+        justify-content: start;
+        flex-wrap: wrap;
+        div{
+            flex-basis: 100%;
+            text-align: left !important;
+        }
+    }
+    #registerBtn{
+        width: 150px !important;
+    }
+}
+@media only screen and (max-width: 425px){
+    #contentListFull{
+        >div{
+            width: 50%;
+        }
+    }
+    #contactSocials{
+        a{
+            width: 12%;
+        }
+    }
+    #profileImageContainer{
+        padding: 0px 40px;
+    }
+
+}
+@media only screen and (max-width: 360px){
+    #newContentPanel{
+        &Dialog{
+            width: 300px;
+        }
+    }
+    #loginDecoration{
+        right: -150px;
+    }
+    #registerDecoration{
+        right: -25%;
+    }
+}
+@media only screen and (max-width: 350px){
+    .surveyPanel{
+        width: 270px;
+    }
+    #profileImageContainer{
+        padding: 0px 20px;
+    }
 }
 // CUSTOM SPACING CLASSES
 .ht-px-7{

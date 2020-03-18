@@ -421,7 +421,7 @@ function loadContentItems(contentTypeId, listOffset, searchString){
 }
 function createContentListItem(id, title, yearReleased, runtime, metascore, imgPath){
     let listItem = document.createElement("div");
-    listItem.classList.add("col-3","manageContentItem","mb-3");
+    listItem.classList.add("col-lg-3","col-md-4","col-sm-6","manageContentItem","mb-3");
 
     let content = `
     <div>

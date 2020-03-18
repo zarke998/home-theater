@@ -5,8 +5,8 @@
 <div id="manageLibraryContainer" class="container-fluid px-3">
     <h1 class="text-center mt-3 mb-5">Manage library</h1>
 
-    <div id="contentFilters" class="row mb-4">
-        <div class="d-flex align-items-center col-6">
+    <div id="contentFilters" class="row mb-4 align-items-center">
+        <div class="d-flex align-items-center col-sm-7 col-md-6 mb-3">
             <label class="mb-0">Select content type: </label>
             <select id="contentTypesSelect" class="ml-3">
                 <?php
@@ -19,9 +19,8 @@
                 ?>
             </select>
         </div>
-        <div class="col-3"></div>
-        <div class="col-3">
-            <input class="d-block ml-auto" type="search" id="search" placeholder="search">
+        <div class="col-sm-5 offset-sm-0 col-md-4 offset-md-2 col-lg-3 offset-lg-3">
+            <input class="d-block ml-auto w-100" type="search" id="search" placeholder="search">
         </div>
     </div>
 
@@ -39,7 +38,7 @@
             <h3 class="my-2">Add new content</h3>
             <form enctype="multipart/form-data" class="w-100" action="../logic/addContent.php" method="POST" onsubmit="return addNewContent()">
                 <div class="row mt-4">
-                    <div class="col-3">
+                    <div class="col-8 offset-2 col-sm-4 offset-sm-0 col-lg-3">
                         <div>
                             <div id="newCoverImage" class="mb-2">
                                 <img src="/images/no-image.jpg" alt="No image" class="w-100">
@@ -63,12 +62,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-9">
+                    <div class="col-sm-8 col-lg-9 pl-3 pl-sm-0">
                         <div class="row">
-                            <div class="col-12 pl-0">
+                            <div class="col-12 ">
                                 <input type="text" name="title" class="ht-input-text border-0" placeholder="Title"/>
                             </div>
-                            <div class="col-6 pl-0">
+                            <div class="col-lg-6 mb-1">
                                 <div class="ht-inline-form-group">
                                     <label>Release year:</label>
                                     <input type="text" name="releaseYear" class="ht-input-text border-0" placeholder="(none)"/>
@@ -86,7 +85,7 @@
                                     <input type="text" name="metascore" class="ht-input-text border-0" placeholder="(none)"/>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-6 pl-lg-2 mb-2">
                                 <div class="ht-inline-form-group">
                                     <label>Content type:</label>
                                     <select id="contentTypesDropdown" name="content_type">
@@ -126,14 +125,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 px-0">
+                            <div class="col-12">
                                 <textarea name="description" class="w-75 h-input-text" rows="4" placeholder="Enter description here..."></textarea>
                             </div>
                         </div>
                     </div>
                     <div id="errorInfo" class="invalid-feedback text-right mb-2"></div>
-                    <button id="addContentBtn" type="submit" name="addBtn" value="add" class="d-block w-25 ml-auto mb-2 ht-btn">Add</button>
-                    <button id="updateContentBtn" type="button" name="updateBtn" value="update" class="d-none w-25 ml-auto mb-2 ht-btn">Edit</button>
+                    <button id="addContentBtn" type="submit" name="addBtn" value="add" class="d-block w-25 ml-auto my-2 ht-btn">Add</button>
+                    <button id="updateContentBtn" type="button" name="updateBtn" value="update" class="d-none w-25 ml-auto my-2 ht-btn">Edit</button>
                 </div>
             </form>
         </div>
