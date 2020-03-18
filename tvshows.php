@@ -5,6 +5,7 @@
     require_once "views/head.php";
 
     $isIntroSmaller = true;
+    $introId = "tvshowsIntro";
     require_once "views/header.php";
 
     require_once "views/tvshows_content.php";

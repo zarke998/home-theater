@@ -6,6 +6,7 @@
 
     $headerText = "Cheap. High quality. New.";
     $isIntroSmaller = false;
+    $introId = "indexIntro";
     require_once "views/header.php";
 
     require_once "views/index_content.php";

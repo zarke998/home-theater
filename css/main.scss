@@ -121,6 +121,9 @@ a{
         font-size: 42px;
     }
 }
+#indexIntro{
+    background-image: url("../images/bloodshot.jpg");
+}
 
 .smallerIntro{
     height: 600px;
@@ -163,6 +166,9 @@ a{
 }
 
 
+#loginIntro{
+    background-image: url("../images/vin-diesel.jpg");
+}
 #loginContainer{
     height: 600px;
     overflow: hidden;
@@ -272,6 +278,9 @@ a{
 
 
 ////////////////////////////////////////////////////////////////// MANAGE CONTENT LIBRARY 
+#manageContentIntro{
+    background-image: url("../images/alien.jpg");
+}
 #manageLibraryContainer{
     h1{
         font-size: 32px;
@@ -435,6 +444,9 @@ a{
     }
 }
 //////////////////////////////////////////////////////////////////////////// REGISTER
+#registerIntro{
+    background-image: url("../images/avengers.jpg");
+}
 #registerDecoration{
     position: absolute;
 
@@ -892,6 +904,9 @@ a{
     
 }
 /////////////////////////////////////////////////////////////////// MOVIES
+#moviesIntro{
+    background-image: url("../images/darth-vader.jpg");
+}
 #moviesContainer{
     h1{
         font-size: 32px;
@@ -906,7 +921,14 @@ a{
         }
     }
 }
+/////////////////////////////////////////////////////////////////// TV SHOWS
+#tvshowsIntro{
+    background-image: url("../images/lucifer.jpg");
+}
 ///////////////////////////////////////////////////////////////////// CONTACT
+#contactIntro{
+    background-image: url("../images/it.jpg");
+}
 #contactContainer{
     h1{
         font-size: 32px;
@@ -941,6 +963,9 @@ a{
     }
 }
 //////////////////////////////////////////////////////////////////////////// ABOUT
+#aboutIntro{
+    background-image: url("../images/thor.jpg");
+}
 #aboutContainer{
     h1{
         font-size: 32px;
@@ -968,6 +993,9 @@ a{
     }
 }
 ///////////////////////////////////////////////////////////////////////////// BOOKMARKS
+#bookmarksIntro{
+    background-image: url("../images/start-wars.jpg");
+}
 #bookmarksContainer{
     h1{
         font-size: 32px;

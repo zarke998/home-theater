@@ -10,6 +10,7 @@
     require_once "views/head.php";
 
     $isIntroSmaller = true;
+    $introId = "loginIntro";
     require_once "views/header.php";
 
     require_once "views/login_content.php";

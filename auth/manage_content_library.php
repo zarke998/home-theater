@@ -10,6 +10,7 @@
     require_once "../views/head.php";
 
     $isIntroSmaller = true;
+    $introId = "manageContentIntro";
     require_once "../views/header.php";
 
     require_once "../views/manage_content_library_content.php";

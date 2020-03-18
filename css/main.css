@@ -121,6 +121,10 @@ a:hover {
   font-size: 42px;
 }
 
+#indexIntro {
+  background-image: url("../images/bloodshot.jpg");
+}
+
 .smallerIntro {
   height: 600px;
 }
@@ -163,6 +167,10 @@ a:hover {
 .websiteTitle {
   font-size: 1.4rem;
   color: #f0f0f0 !important;
+}
+
+#loginIntro {
+  background-image: url("../images/vin-diesel.jpg");
 }
 
 #loginContainer {
@@ -273,6 +281,10 @@ a:hover {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+#manageContentIntro {
+  background-image: url("../images/alien.jpg");
 }
 
 #manageLibraryContainer h1 {
@@ -452,6 +464,10 @@ a:hover {
 #loadMoreContent i {
   height: 100%;
   font-size: 32px;
+}
+
+#registerIntro {
+  background-image: url("../images/avengers.jpg");
 }
 
 #registerDecoration {
@@ -978,6 +994,10 @@ a:hover {
   background-color: #dacb00;
 }
 
+#moviesIntro {
+  background-image: url("../images/darth-vader.jpg");
+}
+
 #moviesContainer h1 {
   font-size: 32px;
 }
@@ -989,6 +1009,14 @@ a:hover {
 
 #contentListFull > div img {
   width: 100%;
+}
+
+#tvshowsIntro {
+  background-image: url("../images/lucifer.jpg");
+}
+
+#contactIntro {
+  background-image: url("../images/it.jpg");
 }
 
 #contactContainer h1 {
@@ -1022,6 +1050,10 @@ a:hover {
   height: 300px;
 }
 
+#aboutIntro {
+  background-image: url("../images/thor.jpg");
+}
+
 #aboutContainer h1 {
   font-size: 32px;
 }
@@ -1041,6 +1073,10 @@ a:hover {
 
 #businessContainer h3 {
   font-size: 28px;
+}
+
+#bookmarksIntro {
+  background-image: url("../images/start-wars.jpg");
 }
 
 #bookmarksContainer {

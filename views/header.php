@@ -108,7 +108,7 @@
         </div>
     </nav>
 
-    <div class="intro<?php if(isset($isIntroSmaller) && $isIntroSmaller) echo " smallerIntro"; ?>">
+    <div id="<?php if(isset($introId)) echo "$introId";?>" class="intro<?php if(isset($isIntroSmaller) && $isIntroSmaller) echo " smallerIntro"; ?>">
         <?php 
             if(isset($headerText)){
                 echo "<h1>$headerText</h1>";
