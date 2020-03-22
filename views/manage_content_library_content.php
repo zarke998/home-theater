@@ -52,7 +52,7 @@
                                 </div>
                                 <p class="text-center my-0 d-none">Image.png</p>
                             </div>
-                            <div class="ht-file-label-group">
+                            <div class="ht-file-label-group mb-3">
                                 <div class="ht-input-file mt-2">
                                     <input id="wallpaperImagesBtn" type="file" name="wallpapers[]" multiple />
                                     <div class="ht-btn">Add wallpapers</div>

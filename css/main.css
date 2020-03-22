@@ -111,6 +111,7 @@ a:hover {
   background-image: url("../images/vin-diesel.jpg");
   background-size: cover;
   background-position-x: center;
+  margin-top: 62px;
 }
 
 .intro h1 {
@@ -346,6 +347,10 @@ a:hover {
 
 #newCoverImage img + input:hover {
   cursor: pointer;
+}
+
+#contentImages .ht-input-file {
+  min-height: 30px;
 }
 
 #wallpapersContainer {
@@ -697,8 +702,10 @@ a:hover {
 #mobileAppContainer {
   background-size: cover;
   background-image: url("../images/dracula.jpg");
+  background-position-x: center;
   min-height: 650px;
   position: relative;
+  text-shadow: 2px 2px black;
 }
 
 #mobileAppContainer #mobileInfo h2 {
@@ -721,7 +728,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-shadow: 1px 1px black;
+  text-shadow: 2px 2px black;
 }
 
 #mobileAppContainer ul li i {
@@ -1141,6 +1148,14 @@ a:hover {
   }
   #newContentPanelDialog {
     width: 600px;
+    max-height: 400px;
+    margin-top: 50px;
+  }
+  .intro {
+    height: 600px;
+  }
+  .smallerIntro {
+    height: 500px;
   }
 }
 
@@ -1159,6 +1174,7 @@ a:hover {
   }
   #loginDecoration {
     right: -100px;
+    height: 650px;
   }
   #registerDecoration {
     right: 0%;
@@ -1176,6 +1192,17 @@ a:hover {
   }
   #promoContainer button {
     margin-bottom: 5px;
+  }
+  .intro {
+    height: 500px;
+    margin-top: 55px;
+  }
+  .smallerIntro {
+    height: 400px;
+  }
+  #mobileDecoration {
+    display: none;
+    right: 100px;
   }
 }
 
@@ -1207,6 +1234,21 @@ a:hover {
     -webkit-filter: brightness(40%);
             filter: brightness(40%);
   }
+  .intro {
+    height: 400px;
+  }
+  .intro h1 {
+    font-size: 36px;
+  }
+  .smallerIntro {
+    height: 300px;
+  }
+  #mobileDecoration {
+    right: 50px;
+  }
+  #newContentPanelDialog h3 {
+    font-size: 28px;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -1234,6 +1276,9 @@ a:hover {
   #registerBtn {
     width: 150px !important;
   }
+  .intro h1 {
+    font-size: 32px;
+  }
 }
 
 @media only screen and (max-width: 425px) {
@@ -1246,11 +1291,34 @@ a:hover {
   #profileImageContainer {
     padding: 0px 40px;
   }
+  .intro {
+    height: 300px;
+  }
+  .intro h1 {
+    left: 3%;
+    bottom: 3%;
+  }
+  .intro h1 span {
+    display: block;
+    width: 100%;
+  }
+  .smallerIntro {
+    height: 200px;
+  }
+  #loginContainer {
+    height: auto;
+  }
+  #loginDecoration {
+    height: 500px;
+  }
 }
 
 @media only screen and (max-width: 360px) {
   #newContentPanelDialog {
     width: 300px;
+  }
+  #newContentPanelDialog h3 {
+    font-size: 24px;
   }
   #loginDecoration {
     right: -150px;

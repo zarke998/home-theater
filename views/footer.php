@@ -188,7 +188,7 @@
         $surveysQuery = "SELECT * FROM surveys 
         WHERE isActive = 1 AND id NOT IN(SELECT s.id FROM surveys AS s
                                          INNER JOIN survey_questions AS s_q ON s_q.survey_id = s.id
-                                         INNER JOIN survey_question_answers AS s_q_a ON s_q_a.survey_question_id = s_q.survey_id
+                                         INNER JOIN survey_question_answers AS s_q_a ON s_q_a.survey_question_id = s_q.id
                                          INNER JOIN user_survey_answers AS u_s_a ON u_s_a.survey_question_answer_id = s_q_a.id
                                          WHERE u_s_a.user_id = :user)";
         $surveyStm = $conn->prepare($surveysQuery);

@@ -4,7 +4,7 @@
     $pageTitle = "HomeTheater - Home";
     require_once "views/head.php";
 
-    $headerText = "Cheap. High quality. New.";
+    $headerText = "Cheap. <span>High quality. New.</span>";
     $isIntroSmaller = false;
     $introId = "indexIntro";
     require_once "views/header.php";
