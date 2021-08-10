@@ -7,7 +7,7 @@
                     <img id="profileImage" src="images/profile.jpg" alt="Profile image" class="w-100">
                 </div>
                 <div id="aboutInfo" class="col-md-9 text-center text-sm-left">
-                    <p>My name is Andrej Zarkovski. I'm studying web programming at "Visoka ICT Škola" in Belgrade. In my early childhood I was very interested in how computers work and I continued to learn more about them. Now I am pursuing career in computer programming. I love japanese culture and I love playing video games.
+                    <p>My name is Andrej Zarkovski. I'm studying web programming at "Visoka ICT Škola" in Belgrade. In my early childhood I was very interested in how computers work and I continued to learn more about them. Now I am pursuing career in computer programming. I love animals and I love playing video games.
 
                     </p>
                     <ul>
